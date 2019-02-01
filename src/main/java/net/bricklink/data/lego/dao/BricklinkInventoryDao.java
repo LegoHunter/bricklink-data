@@ -1,8 +1,8 @@
 package net.bricklink.data.lego.dao;
 
+import lombok.RequiredArgsConstructor;
 import net.bricklink.data.lego.dto.BricklinkInventoryWork;
 import net.bricklink.data.lego.ibatis.mapper.BricklinkInventoryMapper;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

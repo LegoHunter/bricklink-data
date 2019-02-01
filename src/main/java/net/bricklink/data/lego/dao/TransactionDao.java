@@ -1,9 +1,9 @@
 package net.bricklink.data.lego.dao;
 
+import lombok.RequiredArgsConstructor;
 import net.bricklink.data.lego.dto.Transaction;
 import net.bricklink.data.lego.dto.TransactionItem;
 import net.bricklink.data.lego.ibatis.mapper.TransactionMapper;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
