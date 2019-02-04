@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import javax.sql.DataSource;
 
 @Configuration
-@MapperScan("com.vattima.lego.data.ibatis.mapper")
+@MapperScan("net.bricklink.data.lego.ibatis.mapper")
 public class IbatisConfiguration {
 
     @Bean
