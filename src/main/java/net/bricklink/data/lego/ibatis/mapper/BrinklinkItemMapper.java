@@ -8,4 +8,6 @@ import org.apache.ibatis.annotations.Select;
 public interface BrinklinkItemMapper {
     @Select("SELECT item_id, bricklink_item_id FROM bricklink_item WHERE item_id = #{itemId}")
     BricklinkItem getBricklinkItemForItemId(int itemId);
+
+
 }

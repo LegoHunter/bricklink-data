@@ -3,13 +3,14 @@ package net.bricklink.data.lego.dto;
 import lombok.*;
 
 import java.time.Instant;
+import java.util.Optional;
 
 @Setter
 @Getter
 @EqualsAndHashCode
 @ToString
 @NoArgsConstructor
-public class BricklinkInventoryWork {
+public class BricklinkInventory {
     private Integer blInventoryId;
     private Integer boxId;
     private Integer boxIndex;
@@ -51,6 +52,12 @@ public class BricklinkInventoryWork {
     private String internalComments;
     private Instant updateTimestamp;
     private Instant lastSynchronizedTimestamp;
+
+    public boolean shouldSynchronize() {
+        Optional<Instant> lastSynchronizedTimestamp = Optional.ofNullable(getLastSynchronizedTimestamp());
+        Optional<Instant> updateTimestamp = Optional.ofNullable(getUpdateTimestamp());
+        return (!lastSynchronizedTimestamp.isPresent() || !updateTimestamp.isPresent() || lastSynchronizedTimestamp.get().isBefore(getUpdateTimestamp()));
+    }
 }
 
 

@@ -1,6 +1,6 @@
 package net.bricklink.data.lego.ibatis.mapper;
 
-import net.bricklink.data.lego.dto.BricklinkInventoryWork;
+import net.bricklink.data.lego.dto.BricklinkInventory;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Select;
@@ -48,7 +48,7 @@ public interface BricklinkInventoryMapper {
             "JOIN item i ON bi.item_id = i.item_id " +
             "JOIN bricklink_item bli ON i.item_id = bli.item_id")
     @ResultMap("bricklinkInventoryWorkResultMap")
-    public List<BricklinkInventoryWork> getAllInventoryWork();
+    public List<BricklinkInventory> getAllInventoryWork();
 
     @Select("SELECT " + INVENTORY_WORK_COLUMNS + " " +
             "FROM bricklink_inventory bi " +
@@ -58,5 +58,5 @@ public interface BricklinkInventoryMapper {
             "AND bi.item_type = 'SET' " +
             "AND bi.order_id IS NULL")
     @ResultMap("bricklinkInventoryWorkResultMap")
-    public List<BricklinkInventoryWork> getInventoryWork();
+    public List<BricklinkInventory> getInventoryWork();
 }
