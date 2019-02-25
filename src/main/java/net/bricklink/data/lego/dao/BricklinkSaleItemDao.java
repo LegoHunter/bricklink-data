@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 public class BricklinkSaleItemDao {
     private final BricklinkSaleItemMapper bricklinkSaleItemMapper;
 
-    public void insert(BricklinkSaleItem bricklinkSaleItem) {
-        bricklinkSaleItemMapper.insert(bricklinkSaleItem);
+    public void upsert(BricklinkSaleItem bricklinkSaleItem) {
+        bricklinkSaleItemMapper.upsert(bricklinkSaleItem);
     }
 }

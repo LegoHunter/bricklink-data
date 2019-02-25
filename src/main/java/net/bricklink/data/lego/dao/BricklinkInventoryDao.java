@@ -12,11 +12,16 @@ import java.util.List;
 public class BricklinkInventoryDao {
     private final BricklinkInventoryMapper bricklinkInventoryMapper;
 
-    public List<BricklinkInventory> getAllInventoryWork() {
-        return bricklinkInventoryMapper.getAllInventoryWork();
+    public List<BricklinkInventory> getAll() {
+        return bricklinkInventoryMapper.getAll();
     }
 
     public List<BricklinkInventory> getInventoryWork() {
         return bricklinkInventoryMapper.getInventoryWork();
     }
+
+    public void update(BricklinkInventory bricklinkInventory) {
+        bricklinkInventoryMapper.update(bricklinkInventory);
+    }
+
 }

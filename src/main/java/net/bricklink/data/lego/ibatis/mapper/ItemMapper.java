@@ -9,7 +9,7 @@ import java.util.List;
 @Mapper
 public interface ItemMapper {
     @Select("SELECT item_id," +
-            "       itemNumber," +
+            "       item_number," +
             "       item_name," +
             "       number_of_pieces," +
             "       issue_year," +
@@ -34,13 +34,13 @@ public interface ItemMapper {
             "    item_id = #{itemId}")
     void insertBricklinkItem(BricklinkItem bricklinkItem);
 
-    @Insert("INSERT INTO item (itemNumber, item_name, number_of_pieces, issue_year, issue_location, theme_id, item_type_code, notes) " +
+    @Insert("INSERT INTO item (item_number, item_name, number_of_pieces, issue_year, issue_location, theme_id, item_type_code, notes) " +
             "VALUES (#{itemNumber}, #{itemName}, #{numberOfPieces}, #{issueYear}, #{issueLocation}, #{themeId}, #{itemTypeCode}, #{notes})")
     @Options(useGeneratedKeys=true, keyProperty="itemId")
     void insertItem(Item item);
 
     @Select("SELECT item_id," +
-            "       itemNumber," +
+            "       item_number," +
             "       item_name," +
             "       number_of_pieces," +
             "       issue_year," +
@@ -54,7 +54,7 @@ public interface ItemMapper {
     Item findItemById(int itemId);
 
     @Select("SELECT item_id," +
-            "       itemNumber," +
+            "       item_number," +
             "       item_name," +
             "       number_of_pieces," +
             "       issue_year," +
@@ -63,7 +63,7 @@ public interface ItemMapper {
             "       item_type_code," +
             "       notes " +
             "FROM item " +
-            "WHERE itemNumber = #{itemNumber}")
+            "WHERE item_number = #{itemNumber}")
     @ResultMap("itemResultMap")
     Item findItemByNumber(String itemNumber);
 }
