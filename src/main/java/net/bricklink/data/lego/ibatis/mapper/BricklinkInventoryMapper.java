@@ -47,9 +47,17 @@ public interface BricklinkInventoryMapper {
     @Select("SELECT " + INVENTORY_COLUMNS + " " +
             "FROM   bricklink_inventory bi " +
             "JOIN item i ON bi.item_id = i.item_id " +
+            "JOIN bricklink_item bli ON i.item_id = bli.item_id " +
+            "WHERE bi.bl_inventory_id = #{blInventoryId}")
+    @ResultMap("bricklinkInventoryWorkResultMap")
+    BricklinkInventory get(Integer blInventoryId);
+
+    @Select("SELECT " + INVENTORY_COLUMNS + " " +
+            "FROM   bricklink_inventory bi " +
+            "JOIN item i ON bi.item_id = i.item_id " +
             "JOIN bricklink_item bli ON i.item_id = bli.item_id")
     @ResultMap("bricklinkInventoryWorkResultMap")
-    public List<BricklinkInventory> getAll();
+    List<BricklinkInventory> getAll();
 
     @Select("SELECT " + INVENTORY_COLUMNS + " " +
             "FROM bricklink_inventory bi " +
@@ -59,9 +67,10 @@ public interface BricklinkInventoryMapper {
             "AND bi.item_type = 'SET' " +
             "AND bi.order_id IS NULL")
     @ResultMap("bricklinkInventoryWorkResultMap")
-    public List<BricklinkInventory> getInventoryWork();
+    List<BricklinkInventory> getInventoryWork();
 
     @Update("UPDATE bricklink_inventory SET "+
+            "inventory_id = #{inventoryId}," +
             "order_id = #{orderId}," +
             "quantity = #{quantity}," +
             "new_or_used = #{newOrUsed}," +
@@ -70,7 +79,7 @@ public interface BricklinkInventoryMapper {
             "description = #{description}," +
             "remarks = #{remarks}," +
             "is_stock_room = #{isStockRoom}," +
-            "stock_room_id = #{stockRoomId}" +
+            "stock_room_id = #{stockRoomId}," +
             "date_created = #{dateCreated}," +
             "my_cost = #{myCost}," +
             "my_weight = #{myWeight}," +
@@ -81,7 +90,12 @@ public interface BricklinkInventoryMapper {
             "internal_comments = #{internalComments}," +
             "last_synchronized_timestamp = #{lastSynchronizedTimestamp} " +
             "WHERE bl_inventory_id = #{blInventoryId}")
-    public void update(BricklinkInventory bricklinkInventory);
+    void update(BricklinkInventory bricklinkInventory);
+
+    @Update("UPDATE bricklink_inventory SET "+
+            "last_synchronized_timestamp = CURRENT_TIMESTAMP " +
+            "WHERE bl_inventory_id = #{blInventoryId}")
+    void setSynchronizedNow(Integer blInventoryId);
 }
 
 

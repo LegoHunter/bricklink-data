@@ -3,6 +3,7 @@ package net.bricklink.data.lego.dto;
 import lombok.*;
 
 import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Setter
@@ -19,7 +20,7 @@ public class BricklinkInventory {
     private String itemNumber;
     private Long blItemId;
     private String blItemNo;
-    private Integer inventoryId;
+    private Long inventoryId;
     private Integer orderId;
     private String itemType;
     private Integer colorId;
@@ -35,7 +36,7 @@ public class BricklinkInventory {
     private Boolean isRetain;
     private Boolean isStockRoom;
     private String stockRoomId;
-    private Instant dateCreated;
+    private LocalDateTime dateCreated;
     private Double myCost;
     private Integer saleRate;
     private Integer tierQuantity1;

@@ -24,4 +24,11 @@ public class BricklinkInventoryDao {
         bricklinkInventoryMapper.update(bricklinkInventory);
     }
 
+    public BricklinkInventory get(Integer blInventoryId) {
+        return bricklinkInventoryMapper.get(blInventoryId);
+    }
+
+    public void setSynchronizedNow(Integer blInventoryId) {
+        bricklinkInventoryMapper.setSynchronizedNow(blInventoryId);
+    }
 }
