@@ -31,4 +31,8 @@ public class BricklinkInventoryDao {
     public void setSynchronizedNow(Integer blInventoryId) {
         bricklinkInventoryMapper.setSynchronizedNow(blInventoryId);
     }
+
+    public void updateFromImageKeywords(BricklinkInventory bricklinkInventory) {
+        bricklinkInventoryMapper.updateFromImageKeywords(bricklinkInventory);
+    }
 }

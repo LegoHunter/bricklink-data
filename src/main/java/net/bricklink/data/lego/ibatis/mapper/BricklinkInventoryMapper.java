@@ -1,10 +1,7 @@
 package net.bricklink.data.lego.ibatis.mapper;
 
 import net.bricklink.data.lego.dto.BricklinkInventory;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.ResultMap;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -12,11 +9,12 @@ import java.util.List;
 public interface BricklinkInventoryMapper {
     String INVENTORY_COLUMNS =
             "bi.bl_inventory_id," +
+            "bi.uuid," +
             "bi.inventory_id," +
             "bi.order_id," +
             "bi.box_id," +
             "bi.box_index," +
-            "bi.item_id," +
+            "bi.bl_item_number," +
             "i.item_number," +
             "i.item_name," +
             "bli.bl_item_number," +
@@ -45,24 +43,24 @@ public interface BricklinkInventoryMapper {
             "bi.internal_comments ";
 
     @Select("SELECT " + INVENTORY_COLUMNS + " " +
-            "FROM   bricklink_inventory bi " +
-            "JOIN item i ON bi.item_id = i.item_id " +
-            "JOIN bricklink_item bli ON i.item_id = bli.item_id " +
+            "FROM bricklink_inventory bi " +
+            "JOIN bricklink_item bli ON bi.bl_item_number = bli.bl_item_number " +
+            "JOIN item i ON i.item_id = bli.item_id " +
             "WHERE bi.bl_inventory_id = #{blInventoryId}")
     @ResultMap("bricklinkInventoryWorkResultMap")
     BricklinkInventory get(Integer blInventoryId);
 
     @Select("SELECT " + INVENTORY_COLUMNS + " " +
-            "FROM   bricklink_inventory bi " +
-            "JOIN item i ON bi.item_id = i.item_id " +
-            "JOIN bricklink_item bli ON i.item_id = bli.item_id")
+            "FROM bricklink_inventory bi " +
+            "JOIN bricklink_item bli ON bi.bl_item_number = bli.bl_item_number " +
+            "JOIN item i ON i.item_id = bli.item_id")
     @ResultMap("bricklinkInventoryWorkResultMap")
     List<BricklinkInventory> getAll();
 
     @Select("SELECT " + INVENTORY_COLUMNS + " " +
             "FROM bricklink_inventory bi " +
-            "JOIN item i ON bi.item_id = i.item_id " +
-            "JOIN bricklink_item bli ON i.item_id = bli.item_id " +
+            "JOIN bricklink_item bli ON bi.bl_item_number = bli.bl_item_number " +
+            "JOIN item i ON i.item_id = bli.item_id " +
             "WHERE (bi.last_synchronized_timestamp < CURRENT_TIMESTAMP OR bi.last_synchronized_timestamp IS NULL) " +
             "AND bi.item_type = 'SET' " +
             "AND bi.order_id IS NULL")
@@ -96,6 +94,9 @@ public interface BricklinkInventoryMapper {
             "last_synchronized_timestamp = CURRENT_TIMESTAMP " +
             "WHERE bl_inventory_id = #{blInventoryId}")
     void setSynchronizedNow(Integer blInventoryId);
+
+    @UpdateProvider(type=BricklinkInventoryUpdateBuilder.class, method="updateBricklinkInventoryByUuidAndBlItemNumber")
+    void updateFromImageKeywords(BricklinkInventory bricklinkInventory);
 }
 
 

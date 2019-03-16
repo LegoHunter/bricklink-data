@@ -13,6 +13,7 @@ import java.util.Optional;
 @NoArgsConstructor
 public class BricklinkInventory {
     private Integer blInventoryId;
+    private String uuid;
     private Integer boxId;
     private Integer boxIndex;
     private Integer itemId;
@@ -49,7 +50,9 @@ public class BricklinkInventory {
     private Boolean sealed;
     private Boolean builtOnce;
     private Integer boxConditionId;
+    private String boxConditionCode;
     private Integer instructionsConditionId;
+    private String instructionsConditionCode;
     private String internalComments;
     private Instant updateTimestamp;
     private Instant lastSynchronizedTimestamp;

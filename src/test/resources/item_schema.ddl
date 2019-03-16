@@ -9,6 +9,5 @@ create table item
 	theme_id int null,
 	item_type_code char null,
 	notes tinytext null,
-	constraint item_id
-		unique (item_id)
+	constraint item_id primary key (item_id)
 );
