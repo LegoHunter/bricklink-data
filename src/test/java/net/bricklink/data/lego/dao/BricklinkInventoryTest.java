@@ -26,7 +26,14 @@ public class BricklinkInventoryTest {
     BricklinkInventoryDao bricklinkInventoryDao;
 
     @Test
-    @Sql(scripts = {"/condition_schema.ddl", "/item_schema.ddl", "/bricklink_item_schema.ddl", "/bricklink_inventory_schema.ddl"})
+    @Sql(scripts = {"/scripts/db/h2/condition_schema.ddl",
+            "/scripts/db/h2/item_schema.ddl",
+            "/scripts/db/h2/bricklink_item_schema.ddl",
+            "/scripts/db/h2/bricklink_inventory_schema.ddl",
+            "/scripts/db/h2/truncate-tables.sql",
+            "/scripts/db/h2/item_data-01.sql",
+            "/scripts/db/h2/bricklink_item_data-01.sql",
+            "/scripts/db/h2/bricklink_inventory_data-01.sql"})
     public void updateFromImageKeywords() {
         List<BricklinkInventory> bricklinkInventoryList = bricklinkInventoryDao.getAll();
         assertThat(bricklinkInventoryList).hasSize(1);

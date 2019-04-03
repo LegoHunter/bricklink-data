@@ -1,4 +1,4 @@
-CREATE TABLE bricklink_item (
+CREATE TABLE if not exists bricklink_item (
   item_id int(11) NOT NULL,
   bl_item_number varchar(10) NOT NULL,
   bl_item_id int(11) NOT NULL,

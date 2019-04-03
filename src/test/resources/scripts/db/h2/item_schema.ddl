@@ -1,4 +1,4 @@
-create table item
+create table if not exists item
 (
 	item_id int auto_increment,
 	item_number varchar(15) not null,

@@ -22,7 +22,7 @@ public class ItemDaoTest {
     ItemDao itemDao;
 
     @Test
-    @Sql("/item_schema.ddl")
+    @Sql(scripts = {"/scripts/db/h2/item_schema.ddl", "/scripts/db/h2/truncate-tables.sql"})
     public void findItemById() {
         Item item = new Item();
         item.setItemNumber("1234");
