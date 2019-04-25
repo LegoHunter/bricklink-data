@@ -27,6 +27,9 @@ public class BricklinkInventoryDao {
     public BricklinkInventory get(Integer blInventoryId) {
         return bricklinkInventoryMapper.get(blInventoryId);
     }
+    public BricklinkInventory getByUuid(String uuid) {
+        return bricklinkInventoryMapper.getByUuid(uuid);
+    }
 
     public void setSynchronizedNow(Integer blInventoryId) {
         bricklinkInventoryMapper.setSynchronizedNow(blInventoryId);

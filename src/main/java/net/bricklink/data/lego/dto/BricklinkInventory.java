@@ -4,6 +4,7 @@ import lombok.*;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
+import java.util.Map;
 import java.util.Optional;
 
 @Setter
@@ -61,6 +62,21 @@ public class BricklinkInventory {
         Optional<Instant> lastSynchronizedTimestamp = Optional.ofNullable(getLastSynchronizedTimestamp());
         Optional<Instant> updateTimestamp = Optional.ofNullable(getUpdateTimestamp());
         return (!lastSynchronizedTimestamp.isPresent() || !updateTimestamp.isPresent() || lastSynchronizedTimestamp.get().isBefore(getUpdateTimestamp()));
+    }
+
+    public static BricklinkInventory fromKeywords(final Map<String, String> keywords) {
+        BricklinkInventory bricklinkInventory = new BricklinkInventory();
+        Optional.ofNullable(keywords.get("uuid"))
+                .ifPresent(bricklinkInventory::setUuid);
+        Optional.ofNullable(keywords.get("bl"))
+                .ifPresent(bricklinkInventory::setBlItemNo);
+        Optional.ofNullable(keywords.get("sealed"))
+                .ifPresent(v -> bricklinkInventory.setSealed(Boolean.valueOf(v)));
+        Optional.ofNullable(keywords.get("bc"))
+                .ifPresent(bricklinkInventory::setBoxConditionCode);
+        Optional.ofNullable(keywords.get("ic"))
+                .ifPresent(bricklinkInventory::setInstructionsConditionCode);
+        return bricklinkInventory;
     }
 }
 
