@@ -50,24 +50,24 @@ public class DataSourceProperties extends org.springframework.boot.autoconfigure
 
     @Override
     public String determinePassword() {
-        return Optional.of(super.determinePassword())
+        return Optional.ofNullable(super.determinePassword())
                        .orElseGet(() -> getDatabase(getDatabaseKeyName()).map(Database::getPassword)
                                                                          .orElse(null));
     }
 
     @Override
     public String determineUrl() {
-        return getDatabase(getDatabaseKeyName()).map(Database::getUrl).orElse(super.determineUrl());
+        return getDatabase(getDatabaseKeyName()).map(Database::getUrl).orElseGet(super::determineUrl);
     }
 
     @Override
     public String determineUsername() {
-        return getDatabase(getDatabaseKeyName()).map(Database::getUsername).orElse(super.determineUsername());
+        return getDatabase(getDatabaseKeyName()).map(Database::getUsername).orElseGet(super::determineUsername);
     }
 
     @Override
     public String determineDriverClassName() {
-        return getDatabase(getDatabaseKeyName()).map(Database::getDriverClassName).orElse(super.determineDriverClassName());
+        return getDatabase(getDatabaseKeyName()).map(Database::getDriverClassName).orElseGet(super::determineDriverClassName);
     }
 
     @SuppressWarnings("unchecked")
