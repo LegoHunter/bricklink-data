@@ -16,7 +16,13 @@ public class BricklinkInventoryUpdateBuilder {
             Optional.ofNullable(bricklinkInventory.getBuiltOnce())
                     .ifPresent(s -> SET("bi.built_once = #{builtOnce}"));
             Optional.ofNullable(bricklinkInventory.getSealed())
-                    .ifPresent(s -> SET("bi.sealed = #{sealed}"));
+                    .ifPresent(s -> {
+                        SET("bi.sealed = #{sealed}");
+                        if (Boolean.TRUE.equals(s)) {
+                            SET("bi.new_or_used = 'N'");
+                            SET("bi.completeness = 'C'");
+                        }
+                    });
             SET("color_id = bi.color_id");
             WHERE("color_id = bi.color_id");
             WHERE("bi.uuid = #{uuid}");

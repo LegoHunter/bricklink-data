@@ -76,6 +76,8 @@ public class BricklinkInventory {
                 .ifPresent(bricklinkInventory::setBoxConditionCode);
         Optional.ofNullable(keywords.get("ic"))
                 .ifPresent(bricklinkInventory::setInstructionsConditionCode);
+        Optional.ofNullable(keywords.get("bo"))
+                .ifPresent(v -> bricklinkInventory.setBuiltOnce(Boolean.valueOf(v)));
         return bricklinkInventory;
     }
 }
