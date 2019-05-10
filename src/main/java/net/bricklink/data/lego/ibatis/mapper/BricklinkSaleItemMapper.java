@@ -18,5 +18,5 @@ public interface BricklinkSaleItemMapper {
             "    description = #{description}, " +
             "    has_extended_description = #{hasExtendedDescription}")
     @SelectKey(statement = "SELECT LAST_INSERT_ID()", keyProperty = "blSaleItemId", before = false, resultType = Integer.class)
-    void upsert(BricklinkSaleItem bricklinkSaleItem);
+    Integer upsert(BricklinkSaleItem bricklinkSaleItem);
 }
