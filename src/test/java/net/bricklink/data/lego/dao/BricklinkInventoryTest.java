@@ -25,6 +25,12 @@ public class BricklinkInventoryTest {
     @Autowired
     BricklinkInventoryDao bricklinkInventoryDao;
 
+    @EnableAutoConfiguration
+    @Configuration
+    @PropertySource("application.properties")
+    static class DaoConfiguration {
+    }
+
     @Test
     @Sql(scripts = {"/scripts/db/h2/condition_schema.ddl",
             "/scripts/db/h2/item_schema.ddl",
@@ -116,11 +122,5 @@ public class BricklinkInventoryTest {
         assertThat(bricklinkInventoryList.get(0).getBuiltOnce()).isTrue();
         assertThat(bricklinkInventoryList.get(0).getBoxConditionId()).isEqualTo(7);
         assertThat(bricklinkInventoryList.get(0).getInstructionsConditionId()).isEqualTo(8);
-    }
-
-    @EnableAutoConfiguration
-    @Configuration
-    @PropertySource("application.properties")
-    static class DaoConfiguration {
     }
 }

@@ -1,14 +1,14 @@
 package net.bricklink.data.lego.ibatis.mapper;
 
 import net.bricklink.data.lego.dto.BricklinkSaleItem;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.SelectKey;
+import org.apache.ibatis.annotations.*;
+
+import java.util.List;
 
 @Mapper
 public interface BricklinkSaleItemMapper {
-    @Insert("INSERT INTO bricklink_sale_item (bl_item_id, inventory_id, quantity, new_or_used, completeness, unit_price, description, has_extended_description, date_created) " +
-            "VALUES (#{blItemId}, #{inventoryId}, #{quantity}, #{newOrUsed}, #{completeness}, #{unitPrice}, #{description}, #{hasExtendedDescription}, #{dateCreated}) "+
+    @Insert("INSERT INTO bricklink_sale_item (bl_item_id, inventory_id, quantity, new_or_used, completeness, unit_price, description, has_extended_description, date_created, status) " +
+            "VALUES (#{blItemId}, #{inventoryId}, #{quantity}, #{newOrUsed}, #{completeness}, #{unitPrice}, #{description}, #{hasExtendedDescription}, #{dateCreated}, 'C') " +
             "ON DUPLICATE KEY UPDATE " +
             "    bl_sale_item_id = LAST_INSERT_ID(bl_sale_item_id)," +
             "    quantity = #{quantity}, " +
@@ -16,7 +16,16 @@ public interface BricklinkSaleItemMapper {
             "    completeness = #{completeness}, " +
             "    unit_price = #{unitPrice}, " +
             "    description = #{description}, " +
-            "    has_extended_description = #{hasExtendedDescription}")
+            "    has_extended_description = #{hasExtendedDescription}, " +
+            "    status = 'C'")
     @SelectKey(statement = "SELECT LAST_INSERT_ID()", keyProperty = "blSaleItemId", before = false, resultType = Integer.class)
     Integer upsert(BricklinkSaleItem bricklinkSaleItem);
+
+
+    @UpdateProvider(type = BricklinkSaleItemUpdateBuilder.class, method = "updateBricklinkSaleItemSold")
+    void updateBricklinkSaleItemSold(@Param("blItemId") Long blItemId, @Param("newOrUsed") String newOrUsed, @Param("currentlyForSaleInventoryIds") List<Integer> currentlyForSaleInventoryIds);
+
+    @Select("SELECT * from bricklink_sale_item bsi")
+    @ResultMap("bricklinkSaleItemResultMap")
+    List<BricklinkSaleItem> getAll();
 }

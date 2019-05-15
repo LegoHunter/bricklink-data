@@ -11,5 +11,6 @@
         <result column="description"              property="description"/>
         <result column="has_extended_description" property="hasExtendedDescription"/>
         <result column="date_created"             property="dateCreated"/>
+        <result column="status"                   property="status"/>
     </resultMap>
 </mapper>
