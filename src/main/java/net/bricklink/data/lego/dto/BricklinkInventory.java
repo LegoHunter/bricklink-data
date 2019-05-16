@@ -54,6 +54,8 @@ public class BricklinkInventory {
     private String boxConditionCode;
     private Integer instructionsConditionId;
     private String instructionsConditionCode;
+    private String extendedDescription;
+    private String extraDescription;
     private String internalComments;
     private Instant updateTimestamp;
     private Instant lastSynchronizedTimestamp;
@@ -62,6 +64,10 @@ public class BricklinkInventory {
         Optional<Instant> lastSynchronizedTimestamp = Optional.ofNullable(getLastSynchronizedTimestamp());
         Optional<Instant> updateTimestamp = Optional.ofNullable(getUpdateTimestamp());
         return (!lastSynchronizedTimestamp.isPresent() || !updateTimestamp.isPresent() || lastSynchronizedTimestamp.get().isBefore(getUpdateTimestamp()));
+    }
+
+    public boolean isSealed() {
+        return Optional.ofNullable(getSealed()).orElse(false);
     }
 
     public static BricklinkInventory fromKeywords(final Map<String, String> keywords) {

@@ -40,7 +40,9 @@ public interface BricklinkInventoryMapper {
             "bi.internal_comments," +
             "bi.update_timestamp," +
             "bi.last_synchronized_timestamp," +
-            "bi.internal_comments ";
+            "bi.internal_comments," +
+            "bi.extended_description," +
+            "bi.extra_description ";
 
     @Select("SELECT " + INVENTORY_COLUMNS + " " +
             "FROM bricklink_inventory bi " +
