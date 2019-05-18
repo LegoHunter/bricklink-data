@@ -66,8 +66,8 @@ public class BricklinkInventory {
         return (!lastSynchronizedTimestamp.isPresent() || !updateTimestamp.isPresent() || lastSynchronizedTimestamp.get().isBefore(getUpdateTimestamp()));
     }
 
-    public boolean isSealed() {
-        return Optional.ofNullable(getSealed()).orElse(false);
+    public boolean getSealed() {
+        return Optional.ofNullable(sealed).orElse(false);
     }
 
     public static BricklinkInventory fromKeywords(final Map<String, String> keywords) {

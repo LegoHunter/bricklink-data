@@ -39,6 +39,8 @@ CREATE TABLE if not exists bricklink_inventory (
   internal_comments varchar(1024) DEFAULT NULL,
   update_timestamp datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   last_synchronized_timestamp datetime DEFAULT NULL,
+  extended_description varchar(1024) null,
+  extra_description varchar(1024) null,
   CONSTRAINT bl_inventory_id_pk PRIMARY KEY (bl_inventory_id),
   CONSTRAINT bl_item_index_1 UNIQUE (bl_item_number),
   CONSTRAINT inventory_index_index_1 UNIQUE (box_id,box_index),
