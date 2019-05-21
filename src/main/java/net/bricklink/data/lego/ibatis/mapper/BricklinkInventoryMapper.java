@@ -82,7 +82,7 @@ public interface BricklinkInventoryMapper {
             "JOIN item i ON i.item_id = bli.item_id " +
             "WHERE (bi.last_synchronized_timestamp < CURRENT_TIMESTAMP OR bi.last_synchronized_timestamp IS NULL) " +
             "AND bi.item_type = 'SET' " +
-            "AND bi.order_id IS NULL" +
+            "AND bi.order_id IS NULL " +
             "AND bi.for_sale = #{forSale}")
     @ResultMap("bricklinkInventoryWorkResultMap")
     List<BricklinkInventory> getInventoryWork(boolean forSale);

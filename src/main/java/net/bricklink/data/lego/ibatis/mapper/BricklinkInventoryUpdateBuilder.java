@@ -23,6 +23,7 @@ public class BricklinkInventoryUpdateBuilder {
                             SET("bi.completeness = 'C'");
                         }
                     });
+            SET("remarks = #{uuid}");
             SET("color_id = bi.color_id");
             WHERE("color_id = bi.color_id");
             WHERE("bi.uuid = #{uuid}");
