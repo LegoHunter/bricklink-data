@@ -103,5 +103,17 @@
 			<version>1.18.4</version>
 			<scope>provided</scope>
 		</dependency>
+    <dependency>
+      <groupId>com.bricklink.api</groupId>
+      <artifactId>bricklink-rest</artifactId>
+      <version>1.0.0-SNAPSHOT</version>
+      <scope>test</scope>
+    </dependency>
+		<dependency>
+			<groupId>com.bricklink.api</groupId>
+			<artifactId>bricklink-rest</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 </project>

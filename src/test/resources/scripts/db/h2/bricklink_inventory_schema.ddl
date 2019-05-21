@@ -42,7 +42,8 @@ CREATE TABLE if not exists bricklink_inventory (
   extended_description varchar(1024) null,
   extra_description varchar(1024) null,
   CONSTRAINT bl_inventory_id_pk PRIMARY KEY (bl_inventory_id),
-  CONSTRAINT bl_item_index_1 UNIQUE (bl_item_number),
   CONSTRAINT inventory_index_index_1 UNIQUE (box_id,box_index),
   CONSTRAINT uuid_index UNIQUE (uuid)
 );
+
+ALTER TABLE bricklink_inventory ADD FOREIGN KEY (bl_item_number) REFERENCES bricklink_item(bl_item_number);

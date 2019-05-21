@@ -16,6 +16,10 @@ public class BricklinkInventoryDao {
         return bricklinkInventoryMapper.getAll();
     }
 
+    public List<BricklinkInventory> getAllForSale() {
+        return bricklinkInventoryMapper.getAllForSale();
+    }
+
     public List<BricklinkInventory> getInventoryWork() {
         return bricklinkInventoryMapper.getInventoryWork();
     }

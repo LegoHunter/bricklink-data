@@ -123,4 +123,20 @@ public class BricklinkInventoryTest {
         assertThat(bricklinkInventoryList.get(0).getBoxConditionId()).isEqualTo(7);
         assertThat(bricklinkInventoryList.get(0).getInstructionsConditionId()).isEqualTo(8);
     }
+
+    @Test
+    @Sql(scripts = {"/scripts/db/h2/condition_schema.ddl",
+            "/scripts/db/h2/item_schema.ddl",
+            "/scripts/db/h2/bricklink_item_schema.ddl",
+            "/scripts/db/h2/bricklink_inventory_schema.ddl",
+            "/scripts/db/h2/truncate-tables.sql",
+            "/scripts/db/h2/item_data-02.sql",
+            "/scripts/db/h2/bricklink_item_data-02.sql",
+            "/scripts/db/h2/bricklink_inventory_data-02.sql"})
+    public void getAllForSale() {
+        List<BricklinkInventory> bricklinkInventoryList = bricklinkInventoryDao.getAllForSale();
+        bricklinkInventoryList.stream().forEach(bi -> {
+            log.info("[{}]", bi);
+        });
+    }
 }
