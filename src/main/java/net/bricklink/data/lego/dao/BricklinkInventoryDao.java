@@ -20,8 +20,8 @@ public class BricklinkInventoryDao {
         return bricklinkInventoryMapper.getAllForSale();
     }
 
-    public List<BricklinkInventory> getInventoryWork() {
-        return bricklinkInventoryMapper.getInventoryWork();
+    public List<BricklinkInventory> getInventoryWork(boolean forSale) {
+        return bricklinkInventoryMapper.getInventoryWork(forSale);
     }
 
     public void update(BricklinkInventory bricklinkInventory) {
@@ -37,6 +37,10 @@ public class BricklinkInventoryDao {
 
     public void setSynchronizedNow(Integer blInventoryId) {
         bricklinkInventoryMapper.setSynchronizedNow(blInventoryId);
+    }
+
+    public void setNotForSale(Integer blInventoryId) {
+        bricklinkInventoryMapper.setNotForSale(blInventoryId);
     }
 
     public void updateFromImageKeywords(BricklinkInventory bricklinkInventory) {

@@ -82,9 +82,10 @@ public interface BricklinkInventoryMapper {
             "JOIN item i ON i.item_id = bli.item_id " +
             "WHERE (bi.last_synchronized_timestamp < CURRENT_TIMESTAMP OR bi.last_synchronized_timestamp IS NULL) " +
             "AND bi.item_type = 'SET' " +
-            "AND bi.order_id IS NULL")
+            "AND bi.order_id IS NULL" +
+            "AND bi.for_sale = #{forSale}")
     @ResultMap("bricklinkInventoryWorkResultMap")
-    List<BricklinkInventory> getInventoryWork();
+    List<BricklinkInventory> getInventoryWork(boolean forSale);
 
     @Update("UPDATE bricklink_inventory SET "+
             "inventory_id = #{inventoryId}," +
@@ -113,6 +114,11 @@ public interface BricklinkInventoryMapper {
             "last_synchronized_timestamp = CURRENT_TIMESTAMP " +
             "WHERE bl_inventory_id = #{blInventoryId}")
     void setSynchronizedNow(Integer blInventoryId);
+
+    @Update("UPDATE bricklink_inventory SET " +
+            "for_sale = false " +
+            "WHERE bl_inventory_id = #{blInventoryId}")
+    void setNotForSale(Integer blInventoryId);
 
     @UpdateProvider(type=BricklinkInventoryUpdateBuilder.class, method="updateBricklinkInventoryByUuidAndBlItemNumber")
     void updateFromImageKeywords(BricklinkInventory bricklinkInventory);
