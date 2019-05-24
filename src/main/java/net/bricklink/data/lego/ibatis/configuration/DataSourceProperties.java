@@ -38,13 +38,11 @@ public class DataSourceProperties extends org.springframework.boot.autoconfigure
 
     public void setClientConfigDir(Path clientConfigDir) {
         this.clientConfigDir = clientConfigDir;
-        System.out.println(getClientConfigDir());
         loadPropertiesFromJson();
     }
 
     public void setClientConfigFile(Path clientConfigFile) {
         this.clientConfigFile = clientConfigFile;
-        System.out.println(getClientConfigFile());
         loadPropertiesFromJson();
     }
 
