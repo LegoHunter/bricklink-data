@@ -14,12 +14,17 @@ public class BricklinkInventoryUpdateBuilder {
             Optional.ofNullable(bricklinkInventory.getInstructionsConditionCode())
                     .ifPresent(s -> SET("bi.instructions_condition_id = coalesce((select c.condition_id from `condition` c where c.condition_code = upper(#{instructionsConditionCode})),bi.instructions_condition_id)"));
             Optional.ofNullable(bricklinkInventory.getBuiltOnce())
-                    .ifPresent(s -> SET("bi.built_once = #{builtOnce}"));
+                    .ifPresent(s -> {
+                        SET("bi.built_once = #{builtOnce}");
+                        SET("bi.new_or_used = 'U'");
+                    });
             Optional.ofNullable(bricklinkInventory.getSealed())
                     .ifPresent(s -> {
                         SET("bi.sealed = #{sealed}");
                         if (Boolean.TRUE.equals(s)) {
                             SET("bi.new_or_used = 'N'");
+                            SET("bi.completeness = 'S'");
+                        } else {
                             SET("bi.completeness = 'C'");
                         }
                     });
