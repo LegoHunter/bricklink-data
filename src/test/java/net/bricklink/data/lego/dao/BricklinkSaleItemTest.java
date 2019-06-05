@@ -15,6 +15,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -53,6 +54,19 @@ public class BricklinkSaleItemTest {
                 assertThat(s.getStatus()).isEqualTo("S");
             }
         });
+    }
+
+    @Test
+    @Sql(scripts = {"/scripts/db/h2/bricklink_sale_item_schema.ddl",
+            "/scripts/db/h2/bricklink_sale_item_data-02.sql"})
+    public void getPricesForItem() {
+        List<BricklinkSaleItem> saleItems = bricklinkSaleItemDao.getPricesForItem(8885L, "U","C");
+        saleItems.forEach(s ->
+                log.info("[{}]", s));
+        Double[] prices = saleItems.stream().map(BricklinkSaleItem::getUnitPrice).toArray(Double[]::new);
+        for (Double d : prices) {
+            log.info("price [{}]", d);
+        }
     }
 
     @EnableAutoConfiguration

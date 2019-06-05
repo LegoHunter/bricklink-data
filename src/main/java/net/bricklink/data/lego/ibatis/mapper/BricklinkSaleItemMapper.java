@@ -25,6 +25,15 @@ public interface BricklinkSaleItemMapper {
     @UpdateProvider(type = BricklinkSaleItemUpdateBuilder.class, method = "updateBricklinkSaleItemSold")
     void updateBricklinkSaleItemSold(@Param("blItemId") Long blItemId, @Param("newOrUsed") String newOrUsed, @Param("currentlyForSaleInventoryIds") List<Integer> currentlyForSaleInventoryIds);
 
+    @Select("select * " +
+            "from bricklink_sale_item bsi " +
+            "where bsi.bl_item_id = #{blItemId} " +
+            "and bsi.new_or_used = #{newOrUsed} " +
+            "and bsi.completeness = #{completeness} " +
+            "order by bsi.unit_price")
+    @ResultMap("bricklinkSaleItemResultMap")
+    List<BricklinkSaleItem> getPricesForItem(@Param("blItemId") Long blItemId, @Param("newOrUsed") String newOrUsed, @Param("completeness") String completeness);
+
     @Select("SELECT * from bricklink_sale_item bsi")
     @ResultMap("bricklinkSaleItemResultMap")
     List<BricklinkSaleItem> getAll();
