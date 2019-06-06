@@ -374,3 +374,4 @@ INSERT INTO bricklink_sale_item(bl_item_id, inventory_id, description, new_or_us
 INSERT INTO bricklink_sale_item(bl_item_id, inventory_id, description, new_or_used, completeness, quantity, has_extended_description, unit_price, date_created, status) VALUES (4999, 171862930, '100% complete. with instructions. no box.', 'U', 'C', 1, 0, 67.09, '2019-05-27 13:08:38', 'C');
 INSERT INTO bricklink_sale_item(bl_item_id, inventory_id, description, new_or_used, completeness, quantity, has_extended_description, unit_price, date_created, status) VALUES (76530, 171825321, 'A- condition - see terms for details on condition grading.loc5-dt', 'N', 'S', 1, 0, 295.80, '2019-05-27 13:11:58', 'C');
 INSERT INTO bricklink_sale_item(bl_item_id, inventory_id, description, new_or_used, completeness, quantity, has_extended_description, unit_price, date_created, status) VALUES (8867, 172252783, 'MY PERSONAL COLLECTION!', 'N', 'S', 1, 0, 75.00, '2019-06-03 01:48:15', 'C');
+commit;

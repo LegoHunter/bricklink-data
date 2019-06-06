@@ -1,4 +1,5 @@
 SET REFERENTIAL_INTEGRITY FALSE;
+TRUNCATE TABLE bricklink_sale_item;
 TRUNCATE TABLE bricklink_inventory;
 TRUNCATE TABLE bricklink_item;
 TRUNCATE TABLE item;

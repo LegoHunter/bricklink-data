@@ -15,7 +15,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -57,17 +56,30 @@ public class BricklinkSaleItemTest {
     }
 
     @Test
-    @Sql(scripts = {"/scripts/db/h2/bricklink_sale_item_schema.ddl",
+    @Sql(scripts = {"/scripts/db/h2/condition_schema.ddl",
+            "/scripts/db/h2/item_schema.ddl",
+            "/scripts/db/h2/bricklink_item_schema.ddl",
+            "/scripts/db/h2/bricklink_inventory_schema.ddl",
+            "/scripts/db/h2/bricklink_sale_item_schema.ddl",
+            "/scripts/db/h2/truncate-tables.sql",
+            "/scripts/db/h2/item_data-03.sql",
+            "/scripts/db/h2/bricklink_item_data-03.sql",
+            "/scripts/db/h2/bricklink_inventory_data-03.sql",
             "/scripts/db/h2/bricklink_sale_item_data-02.sql"})
-    public void getPricesForItem() {
-        List<BricklinkSaleItem> saleItems = bricklinkSaleItemDao.getPricesForItem(8885L, "U","C");
-        saleItems.forEach(s ->
-                log.info("[{}]", s));
+    public void getPricesForItem_excludesPersonalInventoryItems() {
+        List<BricklinkSaleItem> saleItems = bricklinkSaleItemDao.getPricesForItem(5186L, "U", "C");
+        assertThat(saleItems.size()).isEqualTo(26);
+        saleItems.forEach(s -> {
+            log.info("[{}]", s);
+            assertThat(s.getInventoryId()).isNotEqualTo(125587580);
+        });
         Double[] prices = saleItems.stream().map(BricklinkSaleItem::getUnitPrice).toArray(Double[]::new);
+        log.info("prices [{}]", prices.length);
         for (Double d : prices) {
             log.info("price [{}]", d);
         }
     }
+
 
     @EnableAutoConfiguration
     @Configuration
