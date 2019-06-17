@@ -27,6 +27,7 @@ public class BricklinkSaleItemTest {
 
     @Test
     @Sql(scripts = {"/scripts/db/h2/bricklink_sale_item_schema.ddl",
+            "/scripts/db/h2/truncate-tables.sql",
             "/scripts/db/h2/bricklink_sale_item_data-01.sql"})
     public void updateBricklinkSaleItemSold() {
         List<Integer> currentlyForSaleInventoryIds = new ArrayList<>();

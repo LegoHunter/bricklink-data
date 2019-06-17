@@ -1,4 +1,4 @@
-create table bricklink_sale_item
+create table if not exists bricklink_sale_item
 (
   bl_sale_item_id int auto_increment
     primary key,
@@ -19,7 +19,7 @@ create table bricklink_sale_item
 )
 ;
 
-create index bricklink_item_fk_1
+create index if not exists bricklink_item_fk_1
   on bricklink_sale_item (bl_item_id)
 ;
 

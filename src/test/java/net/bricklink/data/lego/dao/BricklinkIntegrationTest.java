@@ -38,6 +38,7 @@ public class BricklinkIntegrationTest {
             "/scripts/db/h2/item_schema.ddl",
             "/scripts/db/h2/bricklink_item_schema.ddl",
             "/scripts/db/h2/bricklink_inventory_schema.ddl",
+            "/scripts/db/h2/bricklink_sale_item_schema.ddl",
             "/scripts/db/h2/truncate-tables.sql",
             "/scripts/db/h2/item_data-02.sql",
             "/scripts/db/h2/bricklink_item_data-02.sql",
