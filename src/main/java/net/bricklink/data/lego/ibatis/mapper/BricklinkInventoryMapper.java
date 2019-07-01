@@ -120,6 +120,12 @@ public interface BricklinkInventoryMapper {
             "WHERE bl_inventory_id = #{blInventoryId}")
     void setNotForSale(Integer blInventoryId);
 
+    @Update("UPDATE bricklink_inventory SET " +
+            "unit_price = #{unitPrice} " +
+            "WHERE bl_inventory_id = #{blInventoryId} " +
+            "AND fixed_price = false")
+    void setPrice(@Param("blInventoryId") Integer blInventoryId, @Param("unitPrice") double unitPrice);
+
     @UpdateProvider(type=BricklinkInventoryUpdateBuilder.class, method="updateBricklinkInventoryByUuidAndBlItemNumber")
     void updateFromImageKeywords(BricklinkInventory bricklinkInventory);
 }

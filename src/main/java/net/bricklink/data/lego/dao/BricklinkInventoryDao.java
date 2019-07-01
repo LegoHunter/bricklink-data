@@ -43,6 +43,10 @@ public class BricklinkInventoryDao {
         bricklinkInventoryMapper.setNotForSale(blInventoryId);
     }
 
+    public void setPrice(Integer blInventoryId, double price) {
+        bricklinkInventoryMapper.setPrice(blInventoryId, price);
+    }
+
     public void updateFromImageKeywords(BricklinkInventory bricklinkInventory) {
         bricklinkInventoryMapper.updateFromImageKeywords(bricklinkInventory);
     }
