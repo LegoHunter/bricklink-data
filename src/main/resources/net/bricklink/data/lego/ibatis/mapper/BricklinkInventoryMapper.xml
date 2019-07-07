@@ -26,6 +26,8 @@
         <result column="my_weight" property="myWeight"/>
         <result column="sealed" property="sealed"/>
         <result column="built_once" property="builtOnce"/>
+        <result column="for_sale" property="forSale"/>
+        <result column="fixed_price" property="fixedPrice"/>
         <result column="box_condition_id" property="boxConditionId"/>
         <result column="instructions_condition_id" property="instructionsConditionId"/>
         <result column="internal_comments" property="internalComments"/>

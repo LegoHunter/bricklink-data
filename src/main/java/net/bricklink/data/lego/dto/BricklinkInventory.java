@@ -50,6 +50,8 @@ public class BricklinkInventory {
     private Double myWeight;
     private Boolean sealed;
     private Boolean builtOnce;
+    private Boolean forSale;
+    private Boolean fixedPrice;
     private Integer boxConditionId;
     private String boxConditionCode;
     private Integer instructionsConditionId;
@@ -70,6 +72,19 @@ public class BricklinkInventory {
         return Optional.ofNullable(sealed).orElse(false);
     }
 
+    public void setRemarks(String remarks) {
+        this.remarks = this.uuid + "; " + remarks;
+    }
+
+    public boolean canBeAvailableForSale() {
+        boolean canBeAvailableForSale = true;
+        canBeAvailableForSale = canBeAvailableForSale && Optional.ofNullable(this.getForSale()).orElse(false);
+        canBeAvailableForSale = canBeAvailableForSale && Optional.ofNullable(this.getInventoryId()).isPresent();
+        canBeAvailableForSale = canBeAvailableForSale && Optional.ofNullable(this.getInstructionsConditionId()).isPresent();
+        canBeAvailableForSale = canBeAvailableForSale && Optional.ofNullable(this.getBoxConditionId()).isPresent();
+        return canBeAvailableForSale;
+    }
+
     public static BricklinkInventory fromKeywords(final Map<String, String> keywords) {
         BricklinkInventory bricklinkInventory = new BricklinkInventory();
         Optional.ofNullable(keywords.get("uuid"))
@@ -87,6 +102,3 @@ public class BricklinkInventory {
         return bricklinkInventory;
     }
 }
-
-
-

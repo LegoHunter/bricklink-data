@@ -35,6 +35,8 @@ public interface BricklinkInventoryMapper {
             "bi.my_weight," +
             "bi.sealed," +
             "bi.built_once," +
+            "bi.for_sale," +
+            "bi.fixed_price," +
             "bi.box_condition_id," +
             "bi.instructions_condition_id," +
             "bi.internal_comments," +

@@ -140,4 +140,44 @@ public class BricklinkInventoryTest {
             log.info("[{}]", bi);
         });
     }
+
+    @Test
+    public void canBeAvailableForSale() {
+        BricklinkInventory bricklinkInventory = new BricklinkInventory();
+        bricklinkInventory.setForSale(true);
+        bricklinkInventory.setInventoryId(1L);
+        bricklinkInventory.setInstructionsConditionId(1);
+        bricklinkInventory.setBoxConditionId(1);
+        assertThat(bricklinkInventory.canBeAvailableForSale()).isTrue();
+
+        bricklinkInventory.setForSale(false);
+        bricklinkInventory.setInventoryId(1L);
+        bricklinkInventory.setInstructionsConditionId(null);
+        bricklinkInventory.setBoxConditionId(null);
+        assertThat(bricklinkInventory.canBeAvailableForSale()).isFalse();
+
+        bricklinkInventory.setForSale(true);
+        bricklinkInventory.setInventoryId(null);
+        bricklinkInventory.setInstructionsConditionId(null);
+        bricklinkInventory.setBoxConditionId(null);
+        assertThat(bricklinkInventory.canBeAvailableForSale()).isFalse();
+
+        bricklinkInventory.setForSale(false);
+        bricklinkInventory.setInventoryId(null);
+        bricklinkInventory.setInstructionsConditionId(null);
+        bricklinkInventory.setBoxConditionId(null);
+        assertThat(bricklinkInventory.canBeAvailableForSale()).isFalse();
+
+        bricklinkInventory.setForSale(true);
+        bricklinkInventory.setInventoryId(1L);
+        bricklinkInventory.setInstructionsConditionId(1);
+        bricklinkInventory.setBoxConditionId(null);
+        assertThat(bricklinkInventory.canBeAvailableForSale()).isFalse();
+
+        bricklinkInventory.setForSale(true);
+        bricklinkInventory.setInventoryId(1L);
+        bricklinkInventory.setInstructionsConditionId(null);
+        bricklinkInventory.setBoxConditionId(1);
+        assertThat(bricklinkInventory.canBeAvailableForSale()).isFalse();
+    }
 }
