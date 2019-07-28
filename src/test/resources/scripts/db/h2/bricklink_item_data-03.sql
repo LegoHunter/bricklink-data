@@ -7,4 +7,4 @@ INSERT INTO bricklink_item (item_id, bl_item_number, bl_item_id) VALUES (1195, '
 INSERT INTO bricklink_item (item_id, bl_item_number, bl_item_id) VALUES (1235, '7897-1', 59619);
 INSERT INTO bricklink_item (item_id, bl_item_number, bl_item_id) VALUES (1240, '30229-1', 123624);
 INSERT INTO bricklink_item (item_id, bl_item_number, bl_item_id) VALUES (1256, '1376-1', 8867);
-commit
+commit;

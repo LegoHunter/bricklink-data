@@ -1,6 +1,6 @@
 create table if not exists item
 (
-	item_id int auto_increment,
+	item_id int auto_increment primary key,
 	item_number varchar(15) not null,
 	item_name varchar(100) null,
 	number_of_pieces int null,
