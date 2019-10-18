@@ -1,6 +1,7 @@
 package net.bricklink.data.lego.dto;
 
 import lombok.*;
+import lombok.extern.slf4j.Slf4j;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
@@ -12,6 +13,7 @@ import java.util.Optional;
 @EqualsAndHashCode
 @ToString
 @NoArgsConstructor
+@Slf4j
 public class BricklinkInventory {
     private Integer blInventoryId;
     private String uuid;
@@ -23,7 +25,7 @@ public class BricklinkInventory {
     private Long blItemId;
     private String blItemNo;
     private Long inventoryId;
-    private Integer orderId;
+    private String orderId;
     private String itemType;
     private Integer colorId;
     private String colorName;
@@ -72,17 +74,14 @@ public class BricklinkInventory {
         return Optional.ofNullable(sealed).orElse(false);
     }
 
-    public void setRemarks(String remarks) {
-        this.remarks = this.uuid + "; " + remarks;
-    }
-
     public boolean canBeAvailableForSale() {
-        boolean canBeAvailableForSale = true;
-        canBeAvailableForSale = canBeAvailableForSale && Optional.ofNullable(this.getForSale()).orElse(false);
-        canBeAvailableForSale = canBeAvailableForSale && Optional.ofNullable(this.getInventoryId()).isPresent();
-        canBeAvailableForSale = canBeAvailableForSale && Optional.ofNullable(this.getInstructionsConditionId()).isPresent();
-        canBeAvailableForSale = canBeAvailableForSale && Optional.ofNullable(this.getBoxConditionId()).isPresent();
-        return canBeAvailableForSale;
+        boolean isForSale = Optional.ofNullable(this.getForSale()).orElse(false);
+        boolean hasInventoryId = Optional.ofNullable(this.getInventoryId()).isPresent();
+        boolean hasInstructionsCondition = Optional.ofNullable(this.getInstructionsConditionId()).isPresent();
+        boolean hasBoxCondition = Optional.ofNullable(this.getBoxConditionId()).isPresent();
+        boolean hasUnitPrice = Optional.ofNullable(this.getUnitPrice()).map(d -> d > 0.00d).orElse(false);
+        log.info("[{} - {}] isForSale [{}], hasInventoryId [{}], hasInstructionsCondition [{}], hasBoxCondition [{}], hasUnitPrice [{}]",this.getBlItemNo(), this.getUuid(), isForSale, hasInventoryId, hasInstructionsCondition, hasBoxCondition, hasUnitPrice);
+        return isForSale && hasInventoryId && hasInstructionsCondition && hasBoxCondition && hasUnitPrice;
     }
 
     public static BricklinkInventory fromKeywords(final Map<String, String> keywords) {

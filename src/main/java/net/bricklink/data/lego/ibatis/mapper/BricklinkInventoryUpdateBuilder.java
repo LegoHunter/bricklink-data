@@ -14,9 +14,13 @@ public class BricklinkInventoryUpdateBuilder {
             Optional.ofNullable(bricklinkInventory.getInstructionsConditionCode())
                     .ifPresent(s -> SET("bi.instructions_condition_id = coalesce((select c.condition_id from `condition` c where c.condition_code = upper(#{instructionsConditionCode})),bi.instructions_condition_id)"));
             Optional.ofNullable(bricklinkInventory.getBuiltOnce())
-                    .ifPresent(s -> {
+                    .ifPresent(bo -> {
                         SET("bi.built_once = #{builtOnce}");
-                        SET("bi.new_or_used = 'U'");
+                        if (Boolean.TRUE.equals(bo)) {
+                            SET("bi.new_or_used = 'U'");
+                        } else {
+                            SET("bi.new_or_used = 'N'");
+                        }
                     });
             Optional.ofNullable(bricklinkInventory.getSealed())
                     .ifPresent(s -> {
@@ -28,7 +32,6 @@ public class BricklinkInventoryUpdateBuilder {
                             SET("bi.completeness = 'C'");
                         }
                     });
-            SET("remarks = #{uuid}");
             SET("color_id = bi.color_id");
             WHERE("color_id = bi.color_id");
             WHERE("bi.uuid = #{uuid}");

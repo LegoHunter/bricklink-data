@@ -65,6 +65,14 @@ public interface BricklinkInventoryMapper {
     @Select("SELECT " + INVENTORY_COLUMNS + " " +
             "FROM bricklink_inventory bi " +
             "JOIN bricklink_item bli ON bi.bl_item_number = bli.bl_item_number " +
+            "JOIN item i ON i.item_id = bli.item_id " +
+            "WHERE bi.inventory_id = #{inventoryId}")
+    @ResultMap("bricklinkInventoryWorkResultMap")
+    BricklinkInventory getByInventoryId(Long inventoryId);
+
+    @Select("SELECT " + INVENTORY_COLUMNS + " " +
+            "FROM bricklink_inventory bi " +
+            "JOIN bricklink_item bli ON bi.bl_item_number = bli.bl_item_number " +
             "JOIN item i ON i.item_id = bli.item_id")
     @ResultMap("bricklinkInventoryWorkResultMap")
     List<BricklinkInventory> getAll();
@@ -78,14 +86,14 @@ public interface BricklinkInventoryMapper {
     @ResultMap("bricklinkInventoryWorkResultMap")
     List<BricklinkInventory> getAllForSale();
 
-    @Select("SELECT " + INVENTORY_COLUMNS + " " +
-            "FROM bricklink_inventory bi " +
-            "JOIN bricklink_item bli ON bi.bl_item_number = bli.bl_item_number " +
-            "JOIN item i ON i.item_id = bli.item_id " +
-            "WHERE (bi.last_synchronized_timestamp < CURRENT_TIMESTAMP OR bi.last_synchronized_timestamp IS NULL) " +
-            "AND bi.item_type = 'SET' " +
-            "AND bi.order_id IS NULL " +
-            "AND bi.for_sale = #{forSale}")
+        @Select("SELECT " + INVENTORY_COLUMNS + " " +
+                "FROM bricklink_inventory bi " +
+                "JOIN bricklink_item bli ON bi.bl_item_number = bli.bl_item_number " +
+                "JOIN item i ON i.item_id = bli.item_id " +
+                "WHERE (bi.last_synchronized_timestamp < CURRENT_TIMESTAMP OR bi.last_synchronized_timestamp IS NULL) " +
+                "AND bi.item_type IN ('SET','GEAR') " +
+                "AND bi.order_id IS NULL " +
+                "AND bi.for_sale = #{forSale}")
     @ResultMap("bricklinkInventoryWorkResultMap")
     List<BricklinkInventory> getInventoryWork(boolean forSale);
 
@@ -97,7 +105,7 @@ public interface BricklinkInventoryMapper {
             "completeness = #{completeness}," +
             "unit_price = #{unitPrice}," +
             "description = #{description}," +
-            "remarks = #{remarks}," +
+            "remarks = #{uuid}," +
             "is_stock_room = #{isStockRoom}," +
             "stock_room_id = #{stockRoomId}," +
             "date_created = #{dateCreated}," +
@@ -130,6 +138,11 @@ public interface BricklinkInventoryMapper {
 
     @UpdateProvider(type=BricklinkInventoryUpdateBuilder.class, method="updateBricklinkInventoryByUuidAndBlItemNumber")
     void updateFromImageKeywords(BricklinkInventory bricklinkInventory);
+
+    @Update("UPDATE bricklink_inventory SET " +
+            "order_id = #{orderId} " +
+            "WHERE bl_inventory_id = #{blInventoryId}")
+    void updateOrder(@Param("blInventoryId") Integer blInventoryId, @Param("orderId") String orderId);
 }
 
 

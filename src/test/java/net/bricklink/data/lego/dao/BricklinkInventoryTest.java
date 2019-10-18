@@ -148,7 +148,22 @@ public class BricklinkInventoryTest {
         bricklinkInventory.setInventoryId(1L);
         bricklinkInventory.setInstructionsConditionId(1);
         bricklinkInventory.setBoxConditionId(1);
+        bricklinkInventory.setUnitPrice(1.00);
         assertThat(bricklinkInventory.canBeAvailableForSale()).isTrue();
+
+        bricklinkInventory.setForSale(true);
+        bricklinkInventory.setInventoryId(1L);
+        bricklinkInventory.setInstructionsConditionId(1);
+        bricklinkInventory.setBoxConditionId(1);
+        bricklinkInventory.setUnitPrice(0.00);
+        assertThat(bricklinkInventory.canBeAvailableForSale()).isFalse();
+
+        bricklinkInventory.setForSale(true);
+        bricklinkInventory.setInventoryId(1L);
+        bricklinkInventory.setInstructionsConditionId(1);
+        bricklinkInventory.setBoxConditionId(1);
+        bricklinkInventory.setUnitPrice(null);
+        assertThat(bricklinkInventory.canBeAvailableForSale()).isFalse();
 
         bricklinkInventory.setForSale(false);
         bricklinkInventory.setInventoryId(1L);
