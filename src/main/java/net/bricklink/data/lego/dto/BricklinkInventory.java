@@ -80,8 +80,11 @@ public class BricklinkInventory {
         boolean hasInstructionsCondition = Optional.ofNullable(this.getInstructionsConditionId()).isPresent();
         boolean hasBoxCondition = Optional.ofNullable(this.getBoxConditionId()).isPresent();
         boolean hasUnitPrice = Optional.ofNullable(this.getUnitPrice()).map(d -> d > 0.00d).orElse(false);
-        log.info("[{} - {}] isForSale [{}], hasInventoryId [{}], hasInstructionsCondition [{}], hasBoxCondition [{}], hasUnitPrice [{}]",this.getBlItemNo(), this.getUuid(), isForSale, hasInventoryId, hasInstructionsCondition, hasBoxCondition, hasUnitPrice);
-        return isForSale && hasInventoryId && hasInstructionsCondition && hasBoxCondition && hasUnitPrice;
+        boolean canBeForSale = isForSale && hasInventoryId && hasInstructionsCondition && hasBoxCondition && hasUnitPrice;
+        if (!canBeForSale) {
+            log.warn("[{} - {}] isForSale [{}], hasInventoryId [{}], hasInstructionsCondition [{}], hasBoxCondition [{}], hasUnitPrice [{}]", this.getBlItemNo(), this.getUuid(), isForSale, hasInventoryId, hasInstructionsCondition, hasBoxCondition, hasUnitPrice);
+        }
+        return canBeForSale;
     }
 
     public static BricklinkInventory fromKeywords(final Map<String, String> keywords) {

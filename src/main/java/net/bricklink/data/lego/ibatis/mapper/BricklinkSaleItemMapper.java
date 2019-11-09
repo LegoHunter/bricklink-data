@@ -27,9 +27,11 @@ public interface BricklinkSaleItemMapper {
 
     @Select("select * " +
             "from bricklink_sale_item bsi " +
+            "join bricklink_item bli on bli.bl_item_id = bsi.bl_item_id " +
+            "join bricklink_inventory bi on bi.bl_item_number = bli.bl_item_number " +
             "where bsi.bl_item_id = #{blItemId} " +
             "and bsi.new_or_used = #{newOrUsed} " +
-            "and bsi.completeness = #{completeness} " +
+            "and ((bi.item_type = 'SET' and bsi.completeness = #{completeness}) OR (bi.item_type != 'SET')) " +
             "and not exists (select 1 from bricklink_inventory bi where bi.inventory_id = bsi.inventory_id) " +
             "order by bsi.unit_price")
     @ResultMap("bricklinkSaleItemResultMap")
