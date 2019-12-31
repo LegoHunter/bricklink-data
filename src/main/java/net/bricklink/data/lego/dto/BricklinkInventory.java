@@ -80,9 +80,10 @@ public class BricklinkInventory {
         boolean hasInstructionsCondition = Optional.ofNullable(this.getInstructionsConditionId()).isPresent();
         boolean hasBoxCondition = Optional.ofNullable(this.getBoxConditionId()).isPresent();
         boolean hasUnitPrice = Optional.ofNullable(this.getUnitPrice()).map(d -> d > 0.00d).orElse(false);
-        boolean canBeForSale = isForSale && hasInventoryId && hasInstructionsCondition && hasBoxCondition && hasUnitPrice;
+        boolean hasOrder = Optional.ofNullable(this.getOrderId()).isPresent();
+        boolean canBeForSale = isForSale && hasInventoryId && hasInstructionsCondition && hasBoxCondition && hasUnitPrice && !hasOrder;
         if (!canBeForSale) {
-            log.warn("[{} - {}] isForSale [{}], hasInventoryId [{}], hasInstructionsCondition [{}], hasBoxCondition [{}], hasUnitPrice [{}]", this.getBlItemNo(), this.getUuid(), isForSale, hasInventoryId, hasInstructionsCondition, hasBoxCondition, hasUnitPrice);
+            log.warn("[{} - {}] isForSale [{}], hasInventoryId [{}], hasInstructionsCondition [{}], hasBoxCondition [{}], hasUnitPrice [{}], hasOrder [{}]", this.getBlItemNo(), this.getUuid(), isForSale, hasInventoryId, hasInstructionsCondition, hasBoxCondition, hasUnitPrice, hasOrder);
         }
         return canBeForSale;
     }
