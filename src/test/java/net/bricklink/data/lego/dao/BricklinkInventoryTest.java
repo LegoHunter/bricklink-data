@@ -149,50 +149,83 @@ public class BricklinkInventoryTest {
         bricklinkInventory.setInstructionsConditionId(1);
         bricklinkInventory.setBoxConditionId(1);
         bricklinkInventory.setUnitPrice(1.00);
+        bricklinkInventory.setOrderId(null);
         assertThat(bricklinkInventory.canBeAvailableForSale()).isTrue();
 
+        bricklinkInventory = new BricklinkInventory();
         bricklinkInventory.setForSale(true);
         bricklinkInventory.setInventoryId(1L);
         bricklinkInventory.setInstructionsConditionId(1);
         bricklinkInventory.setBoxConditionId(1);
         bricklinkInventory.setUnitPrice(0.00);
+        bricklinkInventory.setOrderId(null);
         assertThat(bricklinkInventory.canBeAvailableForSale()).isFalse();
 
+        bricklinkInventory = new BricklinkInventory();
         bricklinkInventory.setForSale(true);
         bricklinkInventory.setInventoryId(1L);
         bricklinkInventory.setInstructionsConditionId(1);
         bricklinkInventory.setBoxConditionId(1);
         bricklinkInventory.setUnitPrice(null);
+        bricklinkInventory.setOrderId(null);
         assertThat(bricklinkInventory.canBeAvailableForSale()).isFalse();
 
+        bricklinkInventory = new BricklinkInventory();
         bricklinkInventory.setForSale(false);
         bricklinkInventory.setInventoryId(1L);
         bricklinkInventory.setInstructionsConditionId(null);
         bricklinkInventory.setBoxConditionId(null);
+        bricklinkInventory.setOrderId(null);
         assertThat(bricklinkInventory.canBeAvailableForSale()).isFalse();
 
+        bricklinkInventory = new BricklinkInventory();
         bricklinkInventory.setForSale(true);
         bricklinkInventory.setInventoryId(null);
         bricklinkInventory.setInstructionsConditionId(null);
         bricklinkInventory.setBoxConditionId(null);
+        bricklinkInventory.setOrderId(null);
         assertThat(bricklinkInventory.canBeAvailableForSale()).isFalse();
 
+        bricklinkInventory = new BricklinkInventory();
         bricklinkInventory.setForSale(false);
         bricklinkInventory.setInventoryId(null);
         bricklinkInventory.setInstructionsConditionId(null);
         bricklinkInventory.setBoxConditionId(null);
+        bricklinkInventory.setOrderId(null);
         assertThat(bricklinkInventory.canBeAvailableForSale()).isFalse();
 
+        bricklinkInventory = new BricklinkInventory();
         bricklinkInventory.setForSale(true);
         bricklinkInventory.setInventoryId(1L);
         bricklinkInventory.setInstructionsConditionId(1);
         bricklinkInventory.setBoxConditionId(null);
+        bricklinkInventory.setOrderId(null);
         assertThat(bricklinkInventory.canBeAvailableForSale()).isFalse();
 
+        bricklinkInventory = new BricklinkInventory();
         bricklinkInventory.setForSale(true);
         bricklinkInventory.setInventoryId(1L);
         bricklinkInventory.setInstructionsConditionId(null);
         bricklinkInventory.setBoxConditionId(1);
+        bricklinkInventory.setOrderId(null);
         assertThat(bricklinkInventory.canBeAvailableForSale()).isFalse();
+
+        bricklinkInventory = new BricklinkInventory();
+        bricklinkInventory.setForSale(true);
+        bricklinkInventory.setInventoryId(1L);
+        bricklinkInventory.setInstructionsConditionId(1);
+        bricklinkInventory.setBoxConditionId(1);
+        bricklinkInventory.setUnitPrice(1.00);
+        bricklinkInventory.setOrderId("12345678");
+        assertThat(bricklinkInventory.canBeAvailableForSale()).isFalse();
+
+        bricklinkInventory = new BricklinkInventory();
+        bricklinkInventory.setForSale(true);
+        bricklinkInventory.setInventoryId(1L);
+        bricklinkInventory.setInstructionsConditionId(1);
+        bricklinkInventory.setBoxConditionId(1);
+        bricklinkInventory.setUnitPrice(1.00);
+        bricklinkInventory.setOrderId(null);
+        assertThat(bricklinkInventory.canBeAvailableForSale()).isTrue();
     }
 }
