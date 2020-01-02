@@ -9,6 +9,6 @@ import lombok.*;
 @NoArgsConstructor
 public class BricklinkItem {
     private int itemId;
-    private int bricklinkItemId;
-    private String bricklinkItemNo;
+    private int blItemId;
+    private String blItemNumber;
 }
