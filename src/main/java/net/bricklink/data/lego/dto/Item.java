@@ -17,5 +17,5 @@ public class Item {
     private Integer themeId;
     private String itemTypeCode;
     private String notes;
-    private BricklinkItem brinkLinkitem;
+    private BricklinkItem brickLinkItem;
 }

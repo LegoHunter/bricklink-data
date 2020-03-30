@@ -16,6 +16,10 @@ public class InventoryIndexDao {
         return inventoryIndexMapper.getAll();
     }
 
+    public List<InventoryIndex> getAllForBox(int boxId) {
+        return inventoryIndexMapper.getAllForBox(boxId);
+    }
+
     public List<InventoryIndex> getAllWithNoItem() {
         return inventoryIndexMapper.getAllWithNoItem();
     }

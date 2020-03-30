@@ -2,7 +2,12 @@ package net.bricklink.data.lego.ibatis.mapper;
 
 import net.bricklink.data.lego.dto.BricklinkItem;
 import net.bricklink.data.lego.dto.Item;
-import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Options;
+import org.apache.ibatis.annotations.ResultMap;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.UpdateProvider;
 
 import java.util.List;
 
@@ -28,9 +33,9 @@ public interface ItemMapper {
     List<Item> getAllWithNoBricklinkItem();
 
     @Insert("INSERT INTO bricklink_item(bl_item_id, bl_item_number, item_id) " +
-            "VALUES (#{bricklinkItemId}, #{bricklinkItemNo}, #{itemId}) " +
+            "VALUES (#{blItemId}, #{blItemNumber}, #{itemId}) " +
             "ON DUPLICATE KEY UPDATE " +
-            "    bl_item_number = #{bricklinkItemNo}, " +
+            "    bl_item_number = #{blItemNumber}, " +
             "    item_id = #{itemId}")
     void insertBricklinkItem(BricklinkItem bricklinkItem);
 
@@ -65,5 +70,8 @@ public interface ItemMapper {
             "FROM item " +
             "WHERE item_number = #{itemNumber}")
     @ResultMap("itemResultMap")
-    Item findItemByNumber(String itemNumber);
+    List<Item> findItemByNumber(String itemNumber);
+
+    @UpdateProvider(type=ItemUpdateBuilder.class, method="updateItem")
+    void updateItem(Item item);
 }

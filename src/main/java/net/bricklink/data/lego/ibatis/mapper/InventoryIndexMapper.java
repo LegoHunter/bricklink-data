@@ -18,6 +18,10 @@ public interface InventoryIndexMapper {
     @ResultMap("inventoryIndexResultMap")
     List<InventoryIndex> getAllWithNoItem();
 
+    @Select("SELECT box_id, box_index, item_number, box_name, box_number, sealed, quantity, description FROM inventory_index where box_id = #{boxId}")
+    @ResultMap("inventoryIndexResultMap")
+    List<InventoryIndex> getAllForBox(int boxId);
+
     @Insert("INSERT INTO inventory_index(box_id, box_index, item_number, box_name, box_number, sealed, quantity, description) " +
             "VALUES (#{boxId}, #{boxIndex}, #{itemNumber}, #{boxName}, #{boxNumber}, #{sealed}, #{quantity}, #{description})")
     void insertInventoryIndex(InventoryIndex inventoryIndex);

@@ -29,11 +29,15 @@ public class ItemDao {
         return itemMapper.findItemById(itemId);
     }
 
-    public Item findItemByNumber(String itemNumber) {
+    public List<Item> findItemByNumber(String itemNumber) {
         return itemMapper.findItemByNumber(itemNumber);
     }
 
     public void insertBricklinkItem(BricklinkItem bricklinkItem) {
         itemMapper.insertBricklinkItem(bricklinkItem);
+    }
+
+    public void updateItem(Item item) {
+        itemMapper.updateItem(item);
     }
 }

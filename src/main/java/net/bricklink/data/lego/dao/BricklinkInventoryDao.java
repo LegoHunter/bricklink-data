@@ -1,8 +1,8 @@
 package net.bricklink.data.lego.dao;
 
-import com.sun.javafx.binding.StringFormatter;
 import lombok.RequiredArgsConstructor;
 import net.bricklink.data.lego.dto.BricklinkInventory;
+import net.bricklink.data.lego.ibatis.configuration.LegoDataException;
 import net.bricklink.data.lego.ibatis.mapper.BricklinkInventoryMapper;
 import org.springframework.stereotype.Component;
 
@@ -63,5 +63,15 @@ public class BricklinkInventoryDao {
 
     public void updateOrder(Integer blInventoryId, final String orderId) {
         bricklinkInventoryMapper.updateOrder(blInventoryId, orderId);
+    }
+
+    public Optional<BricklinkInventory> findByBoxIdAndBoxIndex(Integer boxId, Integer boxIndex) {
+        return bricklinkInventoryMapper.findByBoxIdAndBoxIndex(boxId, boxIndex);
+    }
+
+    public BricklinkInventory insert(BricklinkInventory bricklinkInventory) {
+        bricklinkInventoryMapper.insert(bricklinkInventory);
+        Optional<BricklinkInventory> bricklinkInventoryOptional = bricklinkInventoryMapper.findByBoxIdAndBoxIndex(bricklinkInventory.getBoxId(), bricklinkInventory.getBoxIndex());
+        return bricklinkInventoryOptional.orElseThrow(() -> new LegoDataException(String.format("Unable to insert BricklinkInventory - boxId/boxIndex not found [%s/%s]", bricklinkInventory.getBoxId(), bricklinkInventory.getBoxIndex())));
     }
 }
