@@ -20,5 +20,6 @@ public class BricklinkSaleItem {
     private String description;
     private Boolean hasExtendedDescription;
     private Instant dateCreated;
+    private String countryCode;
     private String status;
 }

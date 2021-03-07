@@ -22,8 +22,8 @@ public class BricklinkInventoryDao {
         return bricklinkInventoryMapper.getAllForSale();
     }
 
-    public List<BricklinkInventory> getInventoryWork(boolean forSale) {
-        return bricklinkInventoryMapper.getInventoryWork(forSale);
+    public List<BricklinkInventory> getInventoryWork() {
+        return bricklinkInventoryMapper.getInventoryWork();
     }
 
     public void update(BricklinkInventory bricklinkInventory) {

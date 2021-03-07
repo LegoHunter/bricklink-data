@@ -20,7 +20,7 @@ public class BricklinkSaleItemDao {
 
     public void updateBricklinkSaleItemSold(Long blItemId, String newOrUsed, List<Integer> currentlyForSaleInventoryIds) {
         if (currentlyForSaleInventoryIds.isEmpty()) {
-            log.debug("No items currently for sale for [{}] new/Used [{}]", blItemId, newOrUsed);
+            log.info("No items currently for sale for [{}] New/Used [{}]", blItemId, newOrUsed);
         } else {
             bricklinkSaleItemMapper.updateBricklinkSaleItemSold(blItemId, newOrUsed, currentlyForSaleInventoryIds);
         }

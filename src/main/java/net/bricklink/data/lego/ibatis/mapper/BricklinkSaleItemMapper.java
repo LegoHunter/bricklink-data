@@ -7,14 +7,15 @@ import java.util.List;
 
 @Mapper
 public interface BricklinkSaleItemMapper {
-    @Insert("INSERT INTO bricklink_sale_item (bl_item_id, inventory_id, quantity, new_or_used, completeness, unit_price, description, has_extended_description, date_created, status) " +
-            "VALUES (#{blItemId}, #{inventoryId}, #{quantity}, #{newOrUsed}, #{completeness}, #{unitPrice}, #{description}, #{hasExtendedDescription}, #{dateCreated}, 'C') " +
+    @Insert("INSERT INTO bricklink_sale_item (bl_item_id, inventory_id, quantity, new_or_used, completeness, unit_price, country_code, description, has_extended_description, date_created, status) " +
+            "VALUES (#{blItemId}, #{inventoryId}, #{quantity}, #{newOrUsed}, #{completeness}, #{unitPrice}, #{countryCode}, #{description}, #{hasExtendedDescription}, #{dateCreated}, 'C') " +
             "ON DUPLICATE KEY UPDATE " +
             "    bl_sale_item_id = LAST_INSERT_ID(bl_sale_item_id)," +
             "    quantity = #{quantity}, " +
             "    new_or_used = #{newOrUsed}, " +
             "    completeness = #{completeness}, " +
             "    unit_price = #{unitPrice}, " +
+            "    country_code = #{countryCode}, " +
             "    description = #{description}, " +
             "    has_extended_description = #{hasExtendedDescription}, " +
             "    status = 'C'")
