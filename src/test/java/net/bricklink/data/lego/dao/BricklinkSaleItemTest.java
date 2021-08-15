@@ -68,7 +68,7 @@ public class BricklinkSaleItemTest {
             "/scripts/db/h2/bricklink_inventory_data-03.sql",
             "/scripts/db/h2/bricklink_sale_item_data-02.sql"})
     public void getPricesForItem_excludesPersonalInventoryItems() {
-        List<BricklinkSaleItem> saleItems = bricklinkSaleItemDao.getPricesForItem(5186L, "U", "C");
+        List<BricklinkSaleItem> saleItems = bricklinkSaleItemDao.getBrinklinkSaleItems(5186L, "U", "C");
         assertThat(saleItems.size()).isEqualTo(26);
         saleItems.forEach(s -> {
             log.info("[{}]", s);

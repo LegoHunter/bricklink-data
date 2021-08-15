@@ -36,7 +36,7 @@ public interface BricklinkSaleItemMapper {
             "and not exists (select 1 from bricklink_inventory bi where bi.inventory_id = bsi.inventory_id) " +
             "order by bsi.unit_price")
     @ResultMap("bricklinkSaleItemResultMap")
-    List<BricklinkSaleItem> getPricesForItem(@Param("blItemId") Long blItemId, @Param("newOrUsed") String newOrUsed, @Param("completeness") String completeness);
+    List<BricklinkSaleItem> getBrinklinkSaleItems(@Param("blItemId") Long blItemId, @Param("newOrUsed") String newOrUsed, @Param("completeness") String completeness);
 
     @Select("SELECT * from bricklink_sale_item bsi")
     @ResultMap("bricklinkSaleItemResultMap")

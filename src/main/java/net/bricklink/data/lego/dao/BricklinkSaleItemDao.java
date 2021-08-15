@@ -26,8 +26,8 @@ public class BricklinkSaleItemDao {
         }
     }
 
-    public List<BricklinkSaleItem> getPricesForItem(Long blItemId, String newOrUsed, String completeness) {
-        return bricklinkSaleItemMapper.getPricesForItem(blItemId, newOrUsed, completeness);
+    public List<BricklinkSaleItem> getBrinklinkSaleItems(Long blItemId, String newOrUsed, String completeness) {
+        return bricklinkSaleItemMapper.getBrinklinkSaleItems(blItemId, newOrUsed, completeness);
     }
 
     public List<BricklinkSaleItem> getAll() {
