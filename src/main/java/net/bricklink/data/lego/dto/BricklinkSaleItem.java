@@ -3,6 +3,7 @@ package net.bricklink.data.lego.dto;
 import lombok.*;
 
 import java.time.Instant;
+import java.time.ZonedDateTime;
 
 @Setter
 @Getter
@@ -19,7 +20,7 @@ public class BricklinkSaleItem {
     private Double unitPrice;
     private String description;
     private Boolean hasExtendedDescription;
-    private Instant dateCreated;
+    private ZonedDateTime dateCreated;
     private String countryCode;
     private String status;
 }

@@ -27,7 +27,12 @@ public class BricklinkSaleItemDao {
     }
 
     public List<BricklinkSaleItem> getBrinklinkSaleItems(Long blItemId, String newOrUsed, String completeness) {
-        return bricklinkSaleItemMapper.getBrinklinkSaleItems(blItemId, newOrUsed, completeness);
+        try {
+            return bricklinkSaleItemMapper.getBrinklinkSaleItems(blItemId, newOrUsed, completeness);
+        } catch (Exception e) {
+            log.error("Unable to get Bricklink Sale Items for blItemId [{}], newOrUsed [{}], completeness [{}]", blItemId, newOrUsed, completeness, e);
+            throw e;
+        }
     }
 
     public List<BricklinkSaleItem> getAll() {
