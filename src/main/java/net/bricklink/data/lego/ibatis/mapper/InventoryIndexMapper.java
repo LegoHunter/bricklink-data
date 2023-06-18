@@ -1,7 +1,11 @@
 package net.bricklink.data.lego.ibatis.mapper;
 
 import net.bricklink.data.lego.dto.InventoryIndex;
-import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.ResultMap;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 

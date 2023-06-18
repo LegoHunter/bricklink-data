@@ -3,21 +3,21 @@ package net.bricklink.data.lego.dao;
 import lombok.extern.slf4j.Slf4j;
 import net.bricklink.data.lego.dto.BricklinkInventory;
 import net.bricklink.data.lego.ibatis.configuration.IbatisConfiguration;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.test.context.jdbc.Sql;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@RunWith(SpringRunner.class)
+@ExtendWith(SpringExtension.class)
 @Import({BricklinkInventoryDao.class, IbatisConfiguration.class})
 @Slf4j
 public class BricklinkInventoryTest {

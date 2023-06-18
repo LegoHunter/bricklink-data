@@ -9,19 +9,19 @@ import com.bricklink.api.rest.model.v1.Item;
 import lombok.extern.slf4j.Slf4j;
 import net.bricklink.data.lego.dto.BricklinkInventory;
 import net.bricklink.data.lego.ibatis.configuration.IbatisConfiguration;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.jdbc.Sql;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.List;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+@ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = {BricklinkIntegrationTest.MyTestConfiguration.class, BricklinkRestConfiguration.class, BricklinkRestProperties.class, BricklinkInventoryDao.class, IbatisConfiguration.class})
 @EnableAutoConfiguration
 @ActiveProfiles("unit-test")
