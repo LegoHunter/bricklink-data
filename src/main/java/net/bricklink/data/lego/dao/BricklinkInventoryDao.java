@@ -69,6 +69,10 @@ public class BricklinkInventoryDao {
         return bricklinkInventoryMapper.findByBoxIdAndBoxIndex(boxId, boxIndex);
     }
 
+    public List<BricklinkInventory> findByBricklinkitemNumber(String blItemNumber) {
+        return bricklinkInventoryMapper.findByBricklinkitemNumber(blItemNumber);
+    }
+
     public BricklinkInventory insert(BricklinkInventory bricklinkInventory) {
         bricklinkInventoryMapper.insert(bricklinkInventory);
         Optional<BricklinkInventory> bricklinkInventoryOptional = bricklinkInventoryMapper.findByBoxIdAndBoxIndex(bricklinkInventory.getBoxId(), bricklinkInventory.getBoxIndex());

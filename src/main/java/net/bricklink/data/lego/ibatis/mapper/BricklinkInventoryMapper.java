@@ -91,6 +91,14 @@ public interface BricklinkInventoryMapper {
     @Select("SELECT " + INVENTORY_COLUMNS + " " +
             "FROM bricklink_inventory bi " +
             "JOIN bricklink_item bli ON bi.bl_item_number = bli.bl_item_number " +
+            "JOIN item i ON i.item_id = bli.item_id " +
+            "WHERE bi.bl_item_number = #{blItemNumber}")
+    @ResultMap("bricklinkInventoryWorkResultMap")
+    List<BricklinkInventory> findByBricklinkitemNumber(String blItemNumber);
+
+    @Select("SELECT " + INVENTORY_COLUMNS + " " +
+            "FROM bricklink_inventory bi " +
+            "JOIN bricklink_item bli ON bi.bl_item_number = bli.bl_item_number " +
             "JOIN item i ON i.item_id = bli.item_id")
     @ResultMap("bricklinkInventoryWorkResultMap")
     List<BricklinkInventory> getAll();
