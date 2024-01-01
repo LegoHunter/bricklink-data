@@ -7,30 +7,30 @@ import java.time.Period;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class BricklinkInventoryTest {
+class BricklinkInventoryTest {
 
     @Test
-    public void shouldSynchronize_withNullLastSynchronizedAndNullLastUpdate_isTrue() {
+    void shouldSynchronize_withNullLastSynchronizedAndNullLastUpdate_isTrue() {
         BricklinkInventory bricklinkInventory = new BricklinkInventory();
         assertThat(bricklinkInventory.shouldSynchronize()).isTrue();
     }
 
     @Test
-    public void shouldSynchronize_withNullLastSynchronizedAndNonNullLastUpdate_isTrue() {
+    void shouldSynchronize_withNullLastSynchronizedAndNonNullLastUpdate_isTrue() {
         BricklinkInventory bricklinkInventory = new BricklinkInventory();
         bricklinkInventory.setUpdateTimestamp(Instant.now());
         assertThat(bricklinkInventory.shouldSynchronize()).isTrue();
     }
 
     @Test
-    public void shouldSynchronize_withNonNullLastSynchronizedAndNullLastUpdate_isTrue() {
+    void shouldSynchronize_withNonNullLastSynchronizedAndNullLastUpdate_isTrue() {
         BricklinkInventory bricklinkInventory = new BricklinkInventory();
         bricklinkInventory.setLastSynchronizedTimestamp(Instant.now());
         assertThat(bricklinkInventory.shouldSynchronize()).isTrue();
     }
 
     @Test
-    public void shouldSynchronize_withLastSynchronizedBeforeLastUpdate_isTrue() {
+    void shouldSynchronize_withLastSynchronizedBeforeLastUpdate_isTrue() {
         BricklinkInventory bricklinkInventory = new BricklinkInventory();
         Instant now = Instant.now();
         bricklinkInventory.setUpdateTimestamp(now);
@@ -39,7 +39,7 @@ public class BricklinkInventoryTest {
     }
 
     @Test
-    public void shouldSynchronize_withLastSynchronizedAfterLastUpdate_isTrue() {
+    void shouldSynchronize_withLastSynchronizedAfterLastUpdate_isTrue() {
         BricklinkInventory bricklinkInventory = new BricklinkInventory();
         Instant now = Instant.now();
         bricklinkInventory.setUpdateTimestamp(now);

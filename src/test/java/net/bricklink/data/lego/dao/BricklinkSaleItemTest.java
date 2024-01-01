@@ -21,7 +21,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @ExtendWith(SpringExtension.class)
 @Import({BricklinkSaleItemDao.class, IbatisConfiguration.class})
 @Slf4j
-public class BricklinkSaleItemTest {
+class BricklinkSaleItemTest {
     @Autowired
     private BricklinkSaleItemDao bricklinkSaleItemDao;
 
@@ -29,7 +29,7 @@ public class BricklinkSaleItemTest {
     @Sql(scripts = {"/scripts/db/h2/bricklink_sale_item_schema.ddl",
             "/scripts/db/h2/truncate-tables.sql",
             "/scripts/db/h2/bricklink_sale_item_data-01.sql"})
-    public void updateBricklinkSaleItemSold() {
+    void updateBricklinkSaleItemSold() {
         List<Integer> currentlyForSaleInventoryIds = new ArrayList<>();
         currentlyForSaleInventoryIds.add(101);
         currentlyForSaleInventoryIds.add(103);
@@ -67,7 +67,7 @@ public class BricklinkSaleItemTest {
             "/scripts/db/h2/bricklink_item_data-03.sql",
             "/scripts/db/h2/bricklink_inventory_data-03.sql",
             "/scripts/db/h2/bricklink_sale_item_data-02.sql"})
-    public void getPricesForItem_excludesPersonalInventoryItems() {
+    void getPricesForItem_excludesPersonalInventoryItems() {
         List<BricklinkSaleItem> saleItems = bricklinkSaleItemDao.getBrinklinkSaleItems(5186L, "U", "C");
         assertThat(saleItems.size()).isEqualTo(26);
         saleItems.forEach(s -> {

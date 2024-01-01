@@ -20,7 +20,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @ExtendWith(SpringExtension.class)
 @Import({BricklinkInventoryDao.class, IbatisConfiguration.class})
 @Slf4j
-public class BricklinkInventoryTest {
+class BricklinkInventoryTest {
 
     @Autowired
     BricklinkInventoryDao bricklinkInventoryDao;
@@ -40,7 +40,7 @@ public class BricklinkInventoryTest {
             "/scripts/db/h2/item_data-01.sql",
             "/scripts/db/h2/bricklink_item_data-01.sql",
             "/scripts/db/h2/bricklink_inventory_data-01.sql"})
-    public void updateFromImageKeywords() {
+    void updateFromImageKeywords() {
         List<BricklinkInventory> bricklinkInventoryList = bricklinkInventoryDao.getAll();
         assertThat(bricklinkInventoryList).hasSize(1);
         bricklinkInventoryList.forEach(bi -> log.info("[{}]", bi));
@@ -134,7 +134,7 @@ public class BricklinkInventoryTest {
             "/scripts/db/h2/item_data-02.sql",
             "/scripts/db/h2/bricklink_item_data-02.sql",
             "/scripts/db/h2/bricklink_inventory_data-02.sql"})
-    public void getAllForSale() {
+    void getAllForSale() {
         List<BricklinkInventory> bricklinkInventoryList = bricklinkInventoryDao.getAllForSale();
         bricklinkInventoryList.stream().forEach(bi -> {
             log.info("[{}]", bi);
@@ -142,7 +142,7 @@ public class BricklinkInventoryTest {
     }
 
     @Test
-    public void canBeAvailableForSale() {
+    void canBeAvailableForSale() {
         BricklinkInventory bricklinkInventory = new BricklinkInventory();
         bricklinkInventory.setForSale(true);
         bricklinkInventory.setInventoryId(1L);

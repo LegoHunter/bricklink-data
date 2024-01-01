@@ -16,14 +16,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(SpringExtension.class)
 @Import({ItemDao.class, InventoryIndexDao.class, IbatisConfiguration.class})
-public class ItemDaoTest {
+class ItemDaoTest {
 
     @Autowired
     ItemDao itemDao;
 
     @Test
     @Sql(scripts = {"/scripts/db/h2/item_schema.ddl", "/scripts/db/h2/truncate-table-item.sql"})
-    public void findItemById() {
+    void findItemById() {
         Item item = new Item();
         item.setItemNumber("1234");
         item.setItemName("Test Item");
