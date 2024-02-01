@@ -17,6 +17,7 @@ import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Properties;
 
 @Slf4j
 @Getter
@@ -32,6 +33,8 @@ public class DataSourceProperties extends org.springframework.boot.autoconfigure
     private Path clientConfigFile;
 
     Databases databases;
+
+    private Properties hikari;
 
     @JsonIgnore
     private String databaseKeyName;

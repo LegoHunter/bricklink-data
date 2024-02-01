@@ -108,7 +108,8 @@ public interface BricklinkInventoryMapper {
             "FROM bricklink_inventory bi " +
             "JOIN bricklink_item bli ON bi.bl_item_number = bli.bl_item_number " +
             "JOIN item i ON i.item_id = bli.item_id " +
-            "WHERE bi.for_sale = true")
+            "WHERE bi.for_sale = true " +
+            "AND bi.order_id is null")
     @ResultMap("bricklinkInventoryWorkResultMap")
     List<BricklinkInventory> getAllForSale();
 
@@ -118,7 +119,8 @@ public interface BricklinkInventoryMapper {
                 "JOIN item i ON i.item_id = bli.item_id " +
                 "WHERE (bi.last_synchronized_timestamp < CURRENT_TIMESTAMP OR bi.last_synchronized_timestamp IS NULL) " +
                 "AND bi.item_type IN ('SET','GEAR', 'BOOK') " +
-                "AND bi.order_id IS NULL")
+                "AND bi.order_id IS NULL " +
+                "AND bi.for_sale = true")
     @ResultMap("bricklinkInventoryWorkResultMap")
     List<BricklinkInventory> getInventoryWork();
 
