@@ -13,10 +13,6 @@ import java.util.Optional;
 public class PartyDao {
     private final PartyMapper partyMapper;
 
-    public void migrate(final Party party) {
-        partyMapper.migrate(party);
-    }
-
     public void insert(final Party party) {
         partyMapper.insert(party);
     }

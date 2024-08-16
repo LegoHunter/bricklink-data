@@ -11,21 +11,21 @@ import java.util.Optional;
 
 public interface CategoryMapper {
     @Insert("""
-            INSERT INTO category (category_id, category_type, category_name) \
-            VALUES (#{categoryId}, #{categoryType}, #{categoryName})\
+            INSERT INTO category (category_id, category_name, parent_id) \
+            VALUES (#{categoryId}, #{categoryName}, #{parentId})\
             """)
     void insert(Category category);
 
     @Update("""
-            UPDATE category SET category_type = #{categoryType}, category_name = #{categoryName} \
+            UPDATE category SET category_name = #{categoryName}, parent_id = #{parentId} \
             WHERE category_id = #{categoryId}\
             """)
     void update(Category category);
 
     @Select("""
             SELECT category_id,\
-                   category_type,\
-                   category_name \
+                   category_name, \
+                   parent_id \
             FROM category\
             """)
     @ResultMap("categoryResultMap")
@@ -33,11 +33,11 @@ public interface CategoryMapper {
 
     @Select("""
             SELECT category_id,\
-                   category_type,\
-                   category_name \
+                   category_name, \
+                   parent_id \
             FROM category \
             WHERE category_id = #{categoryId}\
             """)
     @ResultMap("categoryResultMap")
-    Optional<Category> findCategoryById(Long categoryId);
+    Optional<Category> findCategoryById(Integer categoryId);
 }

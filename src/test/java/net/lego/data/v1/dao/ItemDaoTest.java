@@ -1,10 +1,11 @@
-package net.bricklink.data.lego.dao;
+package net.lego.data.v1.dao;
 
-import net.bricklink.data.lego.dto.Item;
+import net.lego.data.v1.dto.Item;
 import net.bricklink.data.lego.ibatis.configuration.MybatisConfiguration;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -19,6 +20,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class ItemDaoTest {
 
     @Autowired
+    @Qualifier("itemDaoV1")
     ItemDao itemDao;
 
     @Test

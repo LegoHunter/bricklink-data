@@ -1,20 +1,24 @@
-package net.bricklink.data.lego.dao;
+package net.lego.data.v1.dao;
 
 import lombok.RequiredArgsConstructor;
 import net.bricklink.data.lego.dto.BricklinkItem;
-import net.bricklink.data.lego.dto.Item;
-import net.bricklink.data.lego.ibatis.mapper.ItemMapper;
+import net.lego.data.v1.dto.Item;
+import net.lego.data.v1.mybatis.mapper.ItemMapperV1;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Component
+@Component("itemDaoV1")
 @RequiredArgsConstructor
 public class ItemDao {
-    private final ItemMapper itemMapper;
+    private final ItemMapperV1 itemMapper;
 
     public List<Item> getAll() {
         return itemMapper.getAll();
+    }
+
+    public List<Item> findAll() {
+        return itemMapper.findAll();
     }
 
     public List<Item> getAllWithNoBricklinkItem() {

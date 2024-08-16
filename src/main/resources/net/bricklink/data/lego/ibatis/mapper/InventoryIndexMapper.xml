@@ -9,5 +9,7 @@
         <result column="sealed" property="sealed"/>
         <result column="quantity" property="quantity"/>
         <result column="description" property="description"/>
+        <result column="active" property="active"/>
+        <result column="moved_to_box_id" property="moved_to_box_id"/>
     </resultMap>
 </mapper>

@@ -1,6 +1,7 @@
 package net.lego.data.v2.dao;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import net.lego.data.v2.dto.Category;
 import net.lego.data.v2.mybatis.mapper.CategoryMapper;
 import org.springframework.stereotype.Component;
@@ -10,6 +11,7 @@ import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
+@Slf4j
 public class CategoryDao {
     private final CategoryMapper categoryMapper;
 
@@ -17,12 +19,16 @@ public class CategoryDao {
         return categoryMapper.findAll();
     }
 
-    public Optional<Category> findCategoryById(final Long categoryId) {
+    public Optional<Category> findCategoryById(final Integer categoryId) {
         return categoryMapper.findCategoryById(categoryId);
     }
 
     public void insert(Category category) {
-        categoryMapper.insert(category);
+        try {
+            categoryMapper.insert(category);
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+        }
     }
 
     public void update(Category category) {

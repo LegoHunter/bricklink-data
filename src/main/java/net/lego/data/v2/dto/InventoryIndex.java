@@ -1,16 +1,9 @@
-package net.bricklink.data.lego.dto;
+package net.lego.data.v2.dto;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
-@NoArgsConstructor
-@Setter
-@Getter
-@EqualsAndHashCode
-@ToString
+@Data
+@Builder
 public class InventoryIndex {
     private Integer boxId;
     private Integer boxIndex;
@@ -20,4 +13,6 @@ public class InventoryIndex {
     private String sealed;
     private Integer quantity;
     private String description;
+    private boolean active;
+    private Integer movedToBoxId;
 }

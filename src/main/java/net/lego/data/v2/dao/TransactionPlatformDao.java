@@ -3,6 +3,7 @@ package net.lego.data.v2.dao;
 import lombok.RequiredArgsConstructor;
 import net.lego.data.v2.dto.TransactionPlatform;
 import net.lego.data.v2.mybatis.mapper.TransactionPlatformMapper;
+import org.apache.ibatis.type.TypeHandler;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -17,8 +18,8 @@ public class TransactionPlatformDao {
         return transactionPlatformMapper.findAll();
     }
 
-    public Optional<TransactionPlatform> findTransactionPlatformByCode(final String carrierCode) {
-        return transactionPlatformMapper.findTransactionPlatformByCode(carrierCode);
+    public Optional<TransactionPlatform> findTransactionPlatformById(final Integer transactionPlatformId) {
+        return transactionPlatformMapper.findTransactionPlatformById(transactionPlatformId);
     }
 
     public void insert(TransactionPlatform transactionPlatform) {

@@ -1,0 +1,8 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.lego.data.v1.mybatis.mapper.BricklinkItemMapperV1">
+    <resultMap type="net.lego.data.v1.dto.BricklinkItem" id="bricklinkItemResultMapV1">
+        <result column="item_id" property="itemId"/>
+        <result column="bl_item_number" property="blItemNumber"/>
+        <result column="bl_item_id" property="blItemId"/>
+    </resultMap>
+</mapper>

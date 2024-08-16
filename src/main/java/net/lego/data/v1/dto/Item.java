@@ -1,18 +1,27 @@
 package net.lego.data.v1.dto;
 
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
+import net.bricklink.data.lego.dto.BricklinkItem;
 
-@Data
-@Builder
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+@NoArgsConstructor
+@Setter
+@Getter
+@EqualsAndHashCode
+@ToString
 public class Item {
-    private Long itemId;
+    private int itemId;
     private String itemNumber;
     private String itemName;
     private Integer numberOfPieces;
     private Integer issueYear;
     private String issueLocation;
-    private Long themeId;
+    private Integer themeId;
     private String itemTypeCode;
     private String notes;
+    private List<Category> categories;
+    private BricklinkItem brickLinkItem;
 }

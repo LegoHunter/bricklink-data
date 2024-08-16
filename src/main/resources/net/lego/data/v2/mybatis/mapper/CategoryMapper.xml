@@ -2,7 +2,7 @@
 <mapper namespace="net.lego.data.v2.mybatis.mapper.CategoryMapper">
   <resultMap type="net.lego.data.v2.dto.Category" id="categoryResultMap">
     <result column="category_id" property="categoryId"/>
-    <result column="category_type" property="categoryType"/>
     <result column="category_name" property="categoryName"/>
+    <result column="parent_id" property="parentId"/>
   </resultMap>
 </mapper>

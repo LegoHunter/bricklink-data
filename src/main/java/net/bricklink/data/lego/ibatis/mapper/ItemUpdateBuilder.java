@@ -1,6 +1,6 @@
 package net.bricklink.data.lego.ibatis.mapper;
 
-import net.bricklink.data.lego.dto.Item;
+import net.lego.data.v1.dto.Item;
 import org.apache.ibatis.jdbc.SQL;
 
 import java.util.Optional;

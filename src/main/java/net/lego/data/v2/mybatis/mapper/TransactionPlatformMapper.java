@@ -11,19 +11,19 @@ import java.util.Optional;
 
 public interface TransactionPlatformMapper {
     @Insert("""
-            INSERT INTO transaction_platform (transaction_platform_code, transaction_platform_name) \
-            VALUES (#{transactionPlatformCode}, #{transactionPlatformName})\
+            INSERT INTO transaction_platform (transaction_platform_id, transaction_platform_name) \
+            VALUES (#{transactionPlatformId}, #{transactionPlatformName})\
             """)
     void insert(TransactionPlatform transactionPlatform);
 
     @Update("""
             UPDATE transaction_platform SET transaction_platform_name = #{transactionPlatformName} \
-            WHERE transaction_platform_code = #{transactionPlatformCode}\
+            WHERE transaction_platform_id = #{transactionPlatformId}\
             """)
     void update(TransactionPlatform transactionPlatform);
 
     @Select("""
-            SELECT transaction_platform_code, \
+            SELECT transaction_platform_id, \
                    transaction_platform_name \
             FROM transaction_platform \
             """)
@@ -31,11 +31,11 @@ public interface TransactionPlatformMapper {
     List<TransactionPlatform> findAll();
 
     @Select("""
-            SELECT transaction_platform_code, \
+            SELECT transaction_platform_id, \
                    transaction_platform_name \
             FROM transaction_platform \
-            WHERE transaction_platform_code = #{transactionPlatformCode}\
+            WHERE transaction_platform_id = #{transactionPlatformId}\
             """)
     @ResultMap("transactionPlatformResultMap")
-    Optional<TransactionPlatform> findTransactionPlatformByCode(String transactionPlatformCode);
+    Optional<TransactionPlatform> findTransactionPlatformById(Integer transactionPlatformId);
 }

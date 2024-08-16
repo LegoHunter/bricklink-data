@@ -1,0 +1,47 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.lego.data.v1.mybatis.mapper.BricklinkInventoryMapperV1">
+    <resultMap type="net.lego.data.v1.dto.BricklinkInventory" id="bricklinkInventoryResultMapV1">
+        <result column="bl_inventory_id" property="blInventoryId"/>
+        <result column="uuid" property="uuid"/>
+        <result column="box_id" property="boxId"/>
+        <result column="box_index" property="boxIndex"/>
+        <result column="inventory_id" property="inventoryId"/>
+        <result column="bl_item_number" property="blItemNo"/>
+        <result column="order_id" property="orderId"/>
+        <result column="item_type" property="itemType"/>
+        <result column="color_id" property="colorId"/>
+        <result column="color_name" property="colorName"/>
+        <result column="quantity" property="quantity"/>
+        <result column="new_or_used" property="newOrUsed"/>
+        <result column="completeness" property="completeness"/>
+        <result column="unit_price" property="unitPrice"/>
+        <result column="bind_id" property="bindId"/>
+        <result column="description" property="description"/>
+        <result column="remarks" property="remarks"/>
+        <result column="bulk" property="bulk"/>
+        <result column="is_retain" property="isRetain"/>
+        <result column="is_stock_room" property="isStockRoom"/>
+        <result column="stock_room_id" property="stockRoomId"/>
+        <result column="date_created" property="dateCreated"/>
+        <result column="my_cost" property="myCost"/>
+        <result column="sale_rate" property="saleRate"/>
+        <result column="tier_quantity1" property="tierQuantity1"/>
+        <result column="tier_quantity2" property="tierQuantity2"/>
+        <result column="tier_quantity3" property="tierQuantity3"/>
+        <result column="tier_price1" property="tierPrice1"/>
+        <result column="tier_price2" property="tierPrice2"/>
+        <result column="tier_price3" property="tierPrice3"/>
+        <result column="my_weight" property="myWeight"/>
+        <result column="sealed" property="sealed"/>
+        <result column="built_once" property="builtOnce"/>
+        <result column="for_sale" property="forSale"/>
+        <result column="fixed_price" property="fixedPrice"/>
+        <result column="box_condition_id" property="boxConditionId"/>
+        <result column="instructions_condition_id" property="instructionsConditionId"/>
+        <result column="internal_comments" property="internalComments"/>
+        <result column="update_timestamp" property="updateTimestamp"/>
+        <result column="last_synchronized_timestamp" property="lastSynchronizedTimestamp"/>
+        <result column="extended_description" property="extendedDescription"/>
+        <result column="extra_description" property="extraDescription"/>
+    </resultMap>
+</mapper>

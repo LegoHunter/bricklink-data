@@ -19,7 +19,7 @@ public interface ExternalServiceMapper {
     @Update("""
             UPDATE external_service SET \
             external_service_name = #{externalServiceName}, \
-            external_service_url  = #{externalServiceUrl} \
+            external_service_url  = #{externalServiceUrl}, \
             external_service_type_id  = #{externalServiceTypeId} \
             WHERE external_service_id = #{externalServiceId} \
             """)

@@ -21,6 +21,10 @@ public class ExternalServiceDao {
         return externalServiceMapper.findExternalServiceById(externalServiceId);
     }
 
+    public Optional<ExternalService> findExternalServiceByName(final String externalServiceName) {
+        return externalServiceMapper.findExternalServiceByName(externalServiceName);
+    }
+
     public void insert(ExternalService externalService) {
         externalServiceMapper.insertExternalService(externalService);
     }

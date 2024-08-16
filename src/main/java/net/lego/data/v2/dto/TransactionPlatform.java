@@ -6,6 +6,6 @@ import lombok.Data;
 @Data
 @Builder
 public class TransactionPlatform {
-    private String transactionPlatformCode;
+    private Integer transactionPlatformId;
     private String transactionPlatformName;
 }
