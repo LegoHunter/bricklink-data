@@ -30,6 +30,18 @@ public interface ItemMapper {
     @ResultMap("itemResultMap")
     Optional<Item> findByItemId(Integer itemId);
 
+    @Select("""
+          SELECT item_id, \
+                 item_number, \
+                 item_name, \
+                 notes, \
+                 category_id \
+          FROM item \
+          WHERE item_number = #{itemNumber} \
+            """)
+    @ResultMap("itemResultMap")
+    Optional<Item> findByItemNumber(String itemNumber);
+
     @Insert("""
             INSERT INTO item (item_id, item_number, item_name, notes, category_id) \
             VALUES (#{itemId}, #{itemNumber}, #{itemName}, #{notes}, #{categoryId}) \

@@ -21,6 +21,10 @@ public class ItemDao {
         return itemMapper.findByItemId(itemId);
     }
 
+    public Optional<Item> findByItemNumber(String itemNumber) {
+        return itemMapper.findByItemNumber(itemNumber);
+    }
+
     public void insert(Item item) {
         itemMapper.insert(item);
     }
