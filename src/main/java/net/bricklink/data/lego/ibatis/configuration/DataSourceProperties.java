@@ -13,7 +13,6 @@ import org.springframework.context.annotation.Primary;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -76,7 +75,7 @@ public class DataSourceProperties extends org.springframework.boot.autoconfigure
         Optional<Path> optionalDir = Optional.ofNullable(getClientConfigDir());
         Optional<Path> optionalFile = Optional.ofNullable(getClientConfigFile());
         if ((optionalDir.isPresent()) && (optionalFile.isPresent())) {
-            Path jsonConfigFile = Paths.get(clientConfigDir.toString(), clientConfigFile.toString());
+            Path jsonConfigFile = Path.of(clientConfigDir.toString(), clientConfigFile.toString());
             if (Files.exists(jsonConfigFile)) {
                 ObjectMapper mapper = new ObjectMapper();
                 try {

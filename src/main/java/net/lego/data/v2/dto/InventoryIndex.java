@@ -1,6 +1,7 @@
 package net.lego.data.v2.dto;
 
-import lombok.*;
+import lombok.Builder;
+import lombok.Data;
 
 @Data
 @Builder
