@@ -13,7 +13,7 @@
   <name>Bricklink :: Data</name>
 
   <properties>
-    <java.version>17</java.version>
+    <java.version>22</java.version>
     <bricklink-rest.version>1.3.0-SNAPSHOT</bricklink-rest.version>
     <mysql-connector-j.version>8.0.33</mysql-connector-j.version>
     <lombok.version>1.18.34</lombok.version>
