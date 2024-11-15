@@ -8,7 +8,7 @@ import com.bricklink.api.rest.model.v1.Category;
 import com.bricklink.api.rest.model.v1.Item;
 import lombok.extern.slf4j.Slf4j;
 import net.bricklink.data.lego.dto.BricklinkInventory;
-import net.bricklink.data.lego.ibatis.configuration.MybatisConfiguration;
+import net.bricklink.data.lego.ibatis.configuration.MybatisV1Configuration;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -19,7 +19,7 @@ import org.springframework.test.context.jdbc.Sql;
 
 import java.util.List;
 
-@SpringBootTest(classes = {BricklinkIntegrationTest.MyTestConfiguration.class, BricklinkRestConfiguration.class, BricklinkRestProperties.class, BricklinkInventoryDao.class, MybatisConfiguration.class})
+@SpringBootTest(classes = {BricklinkIntegrationTest.MyTestConfiguration.class, BricklinkRestConfiguration.class, BricklinkRestProperties.class, BricklinkInventoryDao.class, MybatisV1Configuration.class})
 @EnableAutoConfiguration
 @ActiveProfiles("unit-test")
 @Slf4j

@@ -9,5 +9,5 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @ConditionalOnMissingBean(type = "liquibase")
 @MapperScan(basePackages = {"net.bricklink.data.lego.ibatis.mapper", "net.lego.data.v1.mybatis.mapper"})
 @EnableTransactionManagement
-public class MybatisConfiguration {
+public class MybatisV1Configuration {
 }

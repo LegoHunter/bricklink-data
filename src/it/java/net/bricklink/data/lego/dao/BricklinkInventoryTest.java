@@ -2,7 +2,7 @@ package net.bricklink.data.lego.dao;
 
 import lombok.extern.slf4j.Slf4j;
 import net.bricklink.data.lego.dto.BricklinkInventory;
-import net.bricklink.data.lego.ibatis.configuration.MybatisConfiguration;
+import net.bricklink.data.lego.ibatis.configuration.MybatisV1Configuration;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(SpringExtension.class)
-@Import({BricklinkInventoryDao.class, MybatisConfiguration.class})
+@Import({BricklinkInventoryDao.class, MybatisV1Configuration.class})
 @Slf4j
 class BricklinkInventoryTest {
 

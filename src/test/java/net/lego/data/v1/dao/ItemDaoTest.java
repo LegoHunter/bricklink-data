@@ -1,7 +1,7 @@
 package net.lego.data.v1.dao;
 
 import net.lego.data.v1.dto.Item;
-import net.bricklink.data.lego.ibatis.configuration.MybatisConfiguration;
+import net.bricklink.data.lego.ibatis.configuration.MybatisV1Configuration;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(SpringExtension.class)
-@Import({ItemDao.class, InventoryIndexDao.class, MybatisConfiguration.class})
+@Import({ItemDao.class, InventoryIndexDao.class, MybatisV1Configuration.class})
 class ItemDaoTest {
 
     @Autowired
