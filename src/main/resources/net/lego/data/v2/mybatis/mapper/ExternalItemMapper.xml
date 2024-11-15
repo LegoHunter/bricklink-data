@@ -1,11 +1,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="net.lego.data.v2.mybatis.mapper.ExternalItemMapper">
   <resultMap type="net.lego.data.v2.dto.ExternalItem" id="externalItemResultMap">
-    <result column="external_item_id" property="externalItemId"/>
-    <result column="external_number" property="externalNumber"/>
-    <result column="external_unique_id" property="externalUniqueId"/>
-    <result column="external_name" property="externalName"/>
-    <result column="external_url" property="externalUrl"/>
+    <result column="external_item_id"    property="externalItemId"/>
+    <result column="external_number"     property="externalNumber"/>
+    <result column="external_unique_id"  property="externalUniqueId"/>
+    <result column="external_name"       property="externalName"/>
+    <result column="external_url"        property="externalUrl"/>
     <result column="external_service_id" property="externalServiceId"/>
   </resultMap>
 </mapper>
