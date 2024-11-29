@@ -28,13 +28,6 @@ jobs:
         architecture: x64
         cache: maven
 
-  deploy:
-    needs: build-test
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
-    steps:
     - name: mvn deploy
       run: mvn --batch-mode --update-snapshots deploy
       env:
