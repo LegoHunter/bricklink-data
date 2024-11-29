@@ -29,6 +29,7 @@ jobs:
         cache: maven
 
   deploy:
+    needs: build-test
     runs-on: ubuntu-latest
     permissions:
       contents: read
