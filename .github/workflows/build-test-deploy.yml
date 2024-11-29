@@ -29,7 +29,12 @@ jobs:
         cache: maven
 
   deploy:
-    - name: mvn clean install
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+    - name: mvn deploy
       run: mvn --batch-mode --update-snapshots deploy
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
