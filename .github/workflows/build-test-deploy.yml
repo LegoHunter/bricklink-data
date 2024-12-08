@@ -11,7 +11,7 @@ on:
       - closed
 
 jobs:
-  build-test:
+  build-test-deploy:
     runs-on: ubuntu-latest
     permissions:
       contents: read
