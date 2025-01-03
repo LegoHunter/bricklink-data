@@ -21,6 +21,10 @@ public class ConditionDao {
         return conditionMapper.findConditionById(conditionId);
     }
 
+    public Optional<Condition> findByConditionCode(final String conditionCode) {
+        return conditionMapper.findByConditionCode(conditionCode);
+    }
+
     public void insert(Condition condition) {
         conditionMapper.insert(condition);
     }

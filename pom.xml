@@ -96,6 +96,7 @@
       <artifactId>assertj-core</artifactId>
       <scope>test</scope>
     </dependency>
+
     <dependency>
       <groupId>org.glassfish.jaxb</groupId>
       <artifactId>jaxb-runtime</artifactId>
@@ -119,6 +120,7 @@
       <artifactId>lombok</artifactId>
       <scope>provided</scope>
     </dependency>
+
     <dependency>
       <groupId>com.bricklink.api</groupId>
       <artifactId>bricklink-rest</artifactId>

@@ -13,4 +13,5 @@ public class ExternalItem {
     private String externalName;
     private String externalUrl;
     private Integer externalServiceId;
+    private ExternalServiceItem externalServiceItem;
 }
