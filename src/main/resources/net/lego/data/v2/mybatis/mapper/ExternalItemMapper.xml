@@ -7,6 +7,6 @@
     <result column="external_name"       property="externalName"/>
     <result column="external_url"        property="externalUrl"/>
     <result column="external_service_id" property="externalServiceId"/>
-    <association property="external_item_id" javaType="ExternalServiceItem" resultMap="externalServiceItemResultMap">
+    <association property="externalServiceItem" column="external_item_id" javaType="net.lego.data.v2.dto.ExternalServiceItem" resultMap="externalServiceItemResultMap"/>
   </resultMap>
 </mapper>

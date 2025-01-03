@@ -17,7 +17,7 @@ public interface ExternalItemMapper {
     Optional<ExternalItem> findByExternalItemId(Integer externalItemId);
 
     @Select("""
-          SELECT ei.external_item_id, ei.external_number, ei.external_unique_id, ei.external_name, ei.external_item_type, ei.external_url, ei.external_service_id \
+          SELECT ei.external_item_id, ei.external_number, ei.external_unique_id, ei.external_name, ei.external_item_type, ei.external_url, ei.external_service_id, esi.item_id \
           FROM external_item ei \
           JOIN external_service_item esi on ei.external_item_id = esi.external_item_id \
           WHERE esi.item_id = #{itemId} \
