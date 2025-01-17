@@ -1,3 +1,3 @@
 # Bricklink Data module
 
-Provides database layer
+Provides data layer
