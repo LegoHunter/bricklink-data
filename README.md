@@ -1,3 +1,3 @@
-# Bricklink Data module
+# Lego Data module
 
 Provides data layer
