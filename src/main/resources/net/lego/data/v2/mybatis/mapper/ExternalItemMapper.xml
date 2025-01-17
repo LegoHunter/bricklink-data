@@ -7,6 +7,9 @@
     <result column="external_name"       property="externalName"/>
     <result column="external_url"        property="externalUrl"/>
     <result column="external_service_id" property="externalServiceId"/>
-    <association property="externalServiceItem" column="external_item_id" javaType="net.lego.data.v2.dto.ExternalServiceItem" resultMap="externalServiceItemResultMap"/>
+    <association property="externalServiceItem" resultMap="net.lego.data.v2.mybatis.mapper.ExternalServiceItemMapper.externalServiceItemResultMap" javaType="net.lego.data.v2.dto.ExternalServiceItem">
+      <id column="external_item_id" property="externalItemId"/>
+      <result column="item_id" property="itemId"/>
+    </association>
   </resultMap>
 </mapper>

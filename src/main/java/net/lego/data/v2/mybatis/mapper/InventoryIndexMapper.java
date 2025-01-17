@@ -17,11 +17,11 @@ public interface InventoryIndexMapper {
 
     @Select("SELECT box_id, box_index, item_number, box_name, box_number, sealed, quantity, description, active, moved_to_box_id FROM inventory_index WHERE item_number = #{itemNumber} and box_id = #{boxId} and box_index = #{boxIndex}")
     @ResultMap("inventoryIndexResultMap")
-    Optional<InventoryIndex> findByBoxIdAndBoxIndexAndItemNumber(@Param("itemNumber") String itemNumber, @Param("boxNumber") Integer boxId, @Param("boxIndex") Integer boxIndex);
+    Optional<InventoryIndex> findByBoxIdAndBoxIndexAndItemNumber(@Param("itemNumber") String itemNumber, @Param("boxId") Integer boxId, @Param("boxIndex") Integer boxIndex);
 
     @Select("SELECT box_id, box_index, item_number, box_name, box_number, sealed, quantity, description, active, moved_to_box_id FROM inventory_index WHERE box_id = #{boxId} and box_index = #{boxIndex}")
     @ResultMap("inventoryIndexResultMap")
-    Optional<InventoryIndex> findByBoxIdAndBoxIndex(@Param("boxNumber") Integer boxId, @Param("boxIndex") Integer boxIndex);
+    Optional<InventoryIndex> findByBoxIdAndBoxIndex(@Param("boxId") Integer boxId, @Param("boxIndex") Integer boxIndex);
 
     @Select("""
             select box_id, box_index, item_number, box_name, box_number, sealed, quantity, description, active, moved_to_box_id from inventory_index ii

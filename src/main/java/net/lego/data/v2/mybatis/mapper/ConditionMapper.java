@@ -41,7 +41,7 @@ public interface ConditionMapper {
             WHERE condition_id = #{conditionId}\
             """)
     @ResultMap("conditionResultMap")
-    Optional<Condition> findConditionById(Long conditionId);
+    Optional<Condition> findConditionById(Integer conditionId);
 
     @Select("""
             SELECT condition_id,\
