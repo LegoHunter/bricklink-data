@@ -8,26 +8,39 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ExternalItemMapper {
+
     @Select("""
-          SELECT external_item_id, external_number, external_unique_id, external_name, external_item_type, external_url, external_service_id \
-          FROM external_item \
-          WHERE external_item_id = #{externalItemId} \
+          SELECT ei.external_item_id, ei.external_number, ei.external_unique_id, ei.external_name, ei.external_item_type, ei.external_url, ei.external_service_id, esi.item_id 
+          FROM external_item ei
+          LEFT OUTER JOIN external_service_item esi on ei.external_item_id = esi.external_item_id          
+          WHERE ei.external_item_id = #{externalItemId}
           """)
     @ResultMap("externalItemResultMap")
     Optional<ExternalItem> findByExternalItemId(Integer externalItemId);
 
     @Select("""
-          SELECT external_item_id, external_number, external_unique_id, external_name, external_item_type, external_url, external_service_id \
-          FROM external_item \
-          WHERE external_unique_id = #{externalUniqueId} \
+          SELECT ei.external_item_id, ei.external_number, ei.external_unique_id, ei.external_name, ei.external_item_type, ei.external_url, ei.external_service_id, esi.item_id
+          FROM external_item ei
+          LEFT OUTER JOIN external_service_item esi on ei.external_item_id = esi.external_item_id
+          WHERE esi.item_id = #{itemId}
+          """)
+    @ResultMap("externalItemResultMap")
+    Optional<ExternalItem> findByItemId(Integer itemId);
+
+    @Select("""
+          SELECT ei.external_item_id, ei.external_number, ei.external_unique_id, ei.external_name, ei.external_item_type, ei.external_url, ei.external_service_id, esi.item_id
+          FROM external_item ei
+          LEFT OUTER JOIN external_service_item esi on ei.external_item_id = esi.external_item_id
+          WHERE ei.external_unique_id = #{externalUniqueId}
           """)
     @ResultMap("externalItemResultMap")
     Optional<ExternalItem> findByExternalUniqueId(Integer externalUniqueId);
 
     @Select("""
-          SELECT external_item_id, external_number, external_unique_id, external_name, external_item_type, external_url, external_service_id \
-          FROM external_item \
-          WHERE external_number = #{externalNumber} \
+          SELECT ei.external_item_id, ei.external_number, ei.external_unique_id, ei.external_name, ei.external_item_type, ei.external_url, ei.external_service_id, esi.item_id
+          FROM external_item ei
+          LEFT OUTER JOIN external_service_item esi on ei.external_item_id = esi.external_item_id
+          WHERE ei.external_number = #{externalNumber}
           """)
     @ResultMap("externalItemResultMap")
     Optional<ExternalItem> findByExternalNumber(String externalNumber);

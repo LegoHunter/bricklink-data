@@ -17,6 +17,10 @@ public class ExternalItemDao {
         return externalItemMapper.findByExternalItemId(externalItemId);
     }
 
+    public Optional<ExternalItem> findByItemId(Integer itemId) {
+        return externalItemMapper.findByItemId(itemId);
+    }
+
     public Optional<ExternalItem> findByExternalUniqueId(Integer externalUniqueId) {
         return externalItemMapper.findByExternalUniqueId(externalUniqueId);
     }

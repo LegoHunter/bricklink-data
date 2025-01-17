@@ -9,8 +9,7 @@ public class ItemInventory {
     private Integer itemInventoryId;
     private String uuid;
     private Integer itemId;
-    private Integer boxId;
-    private String boxName;
+    private Integer boxNumber;
     private Integer quantity;
     private String description;
     private Boolean active;

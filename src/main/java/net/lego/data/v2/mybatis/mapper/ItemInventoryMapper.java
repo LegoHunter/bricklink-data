@@ -12,8 +12,7 @@ public interface ItemInventoryMapper {
                 item_inventory_id,
             uuid,
             item_id,
-            box_id,
-            box_name,
+            box_number,
             quantity,
             description,
             active,
@@ -40,8 +39,8 @@ public interface ItemInventoryMapper {
     Optional<ItemInventory> findByUuid(String uuid);
 
     @Insert("""
-            INSERT INTO item_inventory (uuid, item_id, box_id, box_name, quantity, description, active, for_sale, new_or_used, completeness, item_condition_id, box_condition_id, instructions_condition_id, sealed, built_once) \
-            VALUES (#{uuid}, #{itemId}, #{boxId}, #{boxName}, #{quantity}, #{description}, #{active}, #{forSale}, #{newOrUsed}, #{completeness}, #{itemConditionId}, #{boxConditionId}, #{instructionsConditionId}, #{sealed}, #{builtOnce}) \
+            INSERT INTO item_inventory (uuid, item_id, box_number, quantity, description, active, for_sale, new_or_used, completeness, item_condition_id, box_condition_id, instructions_condition_id, sealed, built_once) \
+            VALUES (#{uuid}, #{itemId}, #{boxNumber}, #{quantity}, #{description}, #{active}, #{forSale}, #{newOrUsed}, #{completeness}, #{itemConditionId}, #{boxConditionId}, #{instructionsConditionId}, #{sealed}, #{builtOnce}) \
             """)
     @Options(useGeneratedKeys = true, keyProperty = "itemInventoryId")
     void insert(ItemInventory itemInventory);
@@ -50,8 +49,7 @@ public interface ItemInventoryMapper {
             UPDATE item_inventory SET
                    uuid= #{uuid},
                    item_id= #{itemId},
-                   box_id= #{boxId},
-                   box_name= #{boxName},
+                   box_number= #{boxNumber},
                    quantity= #{quantity},
                    description= #{description},
                    active= #{active},

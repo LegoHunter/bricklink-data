@@ -11,7 +11,7 @@ on:
       - closed
 
 jobs:
-  Build-Test-Deploy:
+  build-test-deploy:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -28,7 +28,7 @@ jobs:
         architecture: x64
         cache: maven
 
-    - name: mvn clean install
+    - name: mvn deploy
       run: mvn --batch-mode --update-snapshots deploy
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
